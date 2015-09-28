@@ -26,3 +26,20 @@
 *.exe
 *.out
 *.app
+
+# Ignore .NET Project files
+*.sdf
+*.slf
+*.suo
+*.vcxproj
+*.filter
+*.user
+*.log
+*.tlog
+*.manifest
+*.idb
+*.idb
+*.pdb
+/Debug/
+/bin/
+/obj/
