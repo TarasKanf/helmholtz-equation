@@ -4,7 +4,7 @@ namespace HelmholtzEquation.Integrals
 {
     class SmoothCore : ICore
     {
-         public double Param { get; private set; }
+        public double Param { get; private set; }
         private  Func<double,double,double> F;  
         public SmoothCore(Func<double, double, double> f)
         {
@@ -14,7 +14,7 @@ namespace HelmholtzEquation.Integrals
         {
             Param = par;
         }
-        override public double GetValue(double t)
+        public double GetValue(double t)
         {
             return F(Param,t);
         }

@@ -8,12 +8,15 @@ namespace HelmholtzEquation
 {
     class Program
     {
+        // для зміни умові задачі потрібно змінити imK,realK,EdgeRadius,ImBoundaryCondition,RealBoundaryCondition
+        // Для отримання розвязку на іншій кривій потрібно змінити CurveRadiusToFindSolution
+        static double imK= 1,realK =1; 
         static void Main(string[] args)
         {
             Console.WriteLine("Dirichlet problem for Helmholtz equation \n Enter N (N*2 = number of points):");
             int N = int.Parse(Console.ReadLine());
-            Problem pr = new Problem(); // 
-            pr.Solve();
+            Problem pr = new Problem(EdgeRadius,imK,realK,ImBoundaryCondition,RealBoundaryCondition); // 
+            pr.Solve(N,CurveRadiusToFindSolution);
             int n = 2 * N;
             Console.WriteLine("\n  Accurate solution on some curve:");
             for (int i = 0; i < n; i++)
@@ -34,7 +37,23 @@ namespace HelmholtzEquation
             Console.ReadKey();
         }
         // 
-        // TODO 
+        // TODO
         // функції які потрібно передати в Problem
+        static double EdgeRadius(double t)
+        {
+            return 1; // може бути фукція що задає радіус
+        }
+        static double ImBoundaryCondition(double t)
+        {
+            return 0;
+        }
+        static double RealBoundaryCondition(double t)
+        {
+            return 0;
+        }
+        static double CurveRadiusToFindSolution(double t)
+        {
+            return 2;
+        }
     }
 }

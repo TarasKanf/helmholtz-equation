@@ -2,7 +2,7 @@
 
 namespace HelmholtzEquation.Integrals
 {
-    public static class Integral
+    static class Integral
     {       
         public static double CalculateWithTrapeziumMethod(Func<double,double> f, double a, double b, int n)// for periodiс function on [0, 2*PI]
         {

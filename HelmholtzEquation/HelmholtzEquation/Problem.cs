@@ -9,10 +9,16 @@ namespace HelmholtzEquation
     {
         private Func<double, double> edgeRadius;
         private TrigonPolynomial edgeR;
+        private Func<double, double> imBoundaryCondition, realBoundaryCondition;
+        private double imK, realK;
         // і інші поля якщо потрібно
-        public Problem(Func<double,double> _edgeRadius,double imK,double realK,Func<double,double> imBoundaryCondition,Func<double,double> realBoundaryCondition)
+        public Problem(Func<double,double> _edgeRadius,double _imK,double _realK,Func<double,double> _imBoundaryCondition,Func<double,double> _realBoundaryCondition)
         {
             edgeRadius = _edgeRadius;
+            imBoundaryCondition = _imBoundaryCondition;
+            realBoundaryCondition = _realBoundaryCondition;
+            imK = _imK;
+            realK = _realK;
         }
         public double[] Solve(int n, Func<double,double> radiusToFindSolutionOn)
         {
@@ -28,10 +34,11 @@ namespace HelmholtzEquation
                 temp += h;
             }
             edgeR = new TrigonPolynomial(radius, n);
-            SystemOfIE equation = new SystemOfIE(imBoundaryCondition, realBoundaryCondition);
-            SmoothCore s1 = new SmoothCore(H);
-            SmoothCore s2 = new SmoothCore(H);
-            double[] fi = equation.SolveWithSimpleMetodForPFwithWeakAndSmoothCore(s1, s2, n); // розв`язки інтегрального рівняння в точках t[j] = j*PI/N ,  j = 0, 2*N -1   
+            SmoothCore coreH11 = new SmoothCore(H1_1);
+            SmoothCore coreH12 = new SmoothCore(H1_2);
+            SmoothCore coreH2 = new SmoothCore(H2);
+            SystemOfIE equation = new SystemOfIE(coreH11,coreH12,coreH2,imBoundaryCondition, realBoundaryCondition);            
+            double[] fi = equation.SolveWithSimpleMetodForPFwithWeakAndSmoothCore(n); // розв`язки інтегрального рівняння в точках t[j] = j*PI/N ,  j = 0, 2*N -1   
             solution = FindSolution(fi);
             //
             return solution;
@@ -41,7 +48,22 @@ namespace HelmholtzEquation
 
         private double[] FindSolution(double[] y)
         {
-
+            return new double[y.Length];
+        }
+        private double H1_1(double t, double tau)
+        {
+            // TODD
+            return 0;
+        }
+        private double H1_2(double t, double tau)
+        {
+            // TODD
+            return 0;
+        }
+        private double H2(double t, double tau)
+        {
+            // TODD
+            return 0;
         }
     }
 }
