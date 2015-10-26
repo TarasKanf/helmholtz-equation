@@ -9,6 +9,10 @@ namespace HelmholtzEquation
     {
         private Func<double, double> edgeRadius;
         private TrigonPolynomial edgeR;
+        // r задаватиме радіус кривої на якій знахоться точка x .
+        //При розвязуванні системи r = edgeR, 
+        //а при пошуку розвязку ( розвязок - функція u(x)) на деякій кривій чи в деякій точці r задаватиме радіус тої кривої чи точки
+        private TrigonPolynomial r;
         private Func<double, double> imBoundaryCondition, realBoundaryCondition;
         private double realK;
         // константа до якої обчислюватимуться нескіченні суми. Відповідає за точність обчислення функцій J0(), Y0()
@@ -43,10 +47,7 @@ namespace HelmholtzEquation
             solution = FindSolution(fi,n,radiusToFindSolutionOn); // перша половина solution це реальна частина розвязку, а друга уявна
             //
             return solution;
-        }
-        // TODO
-        // Тут повинна бути куча потрібних функцій H які передаватимемо в  SystemOfIE через делегати
-
+        } 
         private double[] FindSolution(double[] y,int n,Func<double,double> rTFSO)
         {
             double h = Math.PI/n;
@@ -54,14 +55,20 @@ namespace HelmholtzEquation
             // TODO
             return solution;
         }
+        // TODO
+        // Тут повинна бути куча потрібних функцій H які передаватимемо в  SystemOfIE через делегати
         private double H1_1(double t, double tau)
         {
-            // -J0()/(4.0*Math.PI)
-            return 0;
+            double rx = r.Value(t);
+            double ry = edgeR.Value(tau);
+            return -J0(rx,t,ry,tau) / (4.0 * Math.PI);
         }
         private double H1_2(double t, double tau)
         {
             // TODD
+            double rx = r.Value(t);
+            double ry = edgeR.Value(tau);
+
             return 0;
         }
         private double H2(double t, double tau)
