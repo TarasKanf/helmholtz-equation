@@ -17,6 +17,7 @@ namespace HelmholtzEquation
         private double realK;
         // константа до якої обчислюватимуться нескіченні суми. Відповідає за точність обчислення функцій J0(), Y0()
         private const int accuracyN = 20;
+        private const double gamma = 0.57721566490153;
         // і інші поля якщо потрібно
         public Problem(Func<double,double> _edgeRadius,double _realK,Func<double,double> _imBoundaryCondition,Func<double,double> _realBoundaryCondition)
         {
@@ -61,14 +62,13 @@ namespace HelmholtzEquation
         {
             double rx = r.Value(t);
             double ry = edgeR.Value(tau);
-            return -J0(rx,t,ry,tau) / (4.0 * Math.PI);
+            return -J0(Zfunc(rx,t,ry,tau)) / (4.0 * Math.PI);
         }
         private double H1_2(double t, double tau)
-        {
-            // TODD
+        {            
             double rx = r.Value(t);
             double ry = edgeR.Value(tau);
-
+            // TODD
             return 0;
         }
         private double H2(double t, double tau)
@@ -76,7 +76,7 @@ namespace HelmholtzEquation
             // TODD
             return 0;
         }
-        private double J0(double rx,double tx, double ry, double ty)
+        private double J0(double z)
         {
             double result = 0;
             int i = 1; // i = {-1,1}
@@ -84,11 +84,12 @@ namespace HelmholtzEquation
             // першу ітерацію роблю окремо щоб коректно надалі рахувався факторіал  // (0)! = 1
             result += i;
             i *= -1;
+            z = z * z / 4.0;
             // 
             for (int k = 1; k < accuracyN; k++)
             {
                 fuctorial = fuctorial * k;
-                result += i * Math.Pow(Zfunc(rx,tx, ry,ty) / 2.0, 2 * k) / Math.Pow(fuctorial, 2);
+                result += i * Math.Pow(z,k) / Math.Pow(fuctorial, 2);
                 i *= -1;
             }            
             return result;
@@ -96,6 +97,26 @@ namespace HelmholtzEquation
         private double Zfunc(double rx, double tx, double ry,double ty)
         {
             return realK * Math.Sqrt(rx*rx + ry*ry - 2.0*rx*ry*Math.Cos(tx-ty));
+        }
+        private double S(double z)
+        {
+            return J0(z)*(Math.Log(2) - gamma) - Math.PI*L(z)/2.0;
+        }
+        private double L(double z)
+        {
+            double result = 0;
+            double sum = 0;
+            int i = 1;
+            double factorial = 1 ;
+            z = z * z / 4.0;
+            for (int k = 1; k < accuracyN; k++)
+            {
+                sum += 1.0 / k;
+                factorial *= k;
+                result += i * sum * Math.Pow(z, k) / Math.Pow(factorial, 2);
+                i *= -1;                
+            }
+            return result*2.0/Math.PI;
         }
     }
 }
