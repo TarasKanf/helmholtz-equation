@@ -5,7 +5,7 @@ namespace HelmholtzEquation.LinearSystem
     public static class SLAE
     {
         private const double epsilon = 0.000001;
-        public static double[] SolveWithIakobiMethod(double[,] a, double[] b, double eps)
+        public static double[] JacobiMethodSolving(double[,] a, double[] b, double eps)
         {
             double[] xk1 = new double[b.Length];
             double[] xk2 = new double[b.Length];
@@ -34,7 +34,7 @@ namespace HelmholtzEquation.LinearSystem
                     xk2[i] = -temp / a[i, i];
                 }
             }
-            if (iteration > 9999) throw new Exception("Mothod Iakoby does not converge to solution.");
+            if (iteration > 9999) throw new Exception("Jacobi method does not converge to solution.");
             return xk2;
         }
         private static bool LoopContinue(double[] x1, double[] x2, double eps)
@@ -46,7 +46,7 @@ namespace HelmholtzEquation.LinearSystem
             if (maxdif < eps) ans = false;
             return ans;
         }
-        static public double[] SolveWithLU(double[,] A, double[] F, int n)
+        static public double[] LU_methodSolving(double[,] A, double[] F, int n)
         {
             // розклад матриці A
             double[,] lu = new double[n, n];
