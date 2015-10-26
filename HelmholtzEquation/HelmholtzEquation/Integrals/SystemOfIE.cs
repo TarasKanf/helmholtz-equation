@@ -94,7 +94,7 @@ namespace HelmholtzEquation.Integrals
                 }
                 ti += h;
             }
-            return SLAE.SolveWithLU(A,g,4*N);
+            return SLAE.LU_methodSolving(A,g,4*N);
         }
     }
 }
