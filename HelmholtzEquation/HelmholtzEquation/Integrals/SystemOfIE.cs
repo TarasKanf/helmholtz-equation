@@ -47,7 +47,7 @@ namespace HelmholtzEquation.Integrals
                 {
                     A[i, j] = Math.PI * H12.GetValue(tauj) / N;
                     // перевірити чи треба передавати саме j
-                    A[i, j] = A[i, j] + H11.GetValue(tauj) * 2.0 * Math.PI * Integral.CoefficientForWeakSingular(H11.Param, j- 2*N, N, tauj);
+                    A[i, j] = A[i, j] + H11.GetValue(tauj) * 2.0 * Math.PI * Integral.CoefficientForWeakSingular(H11.Param, j, N, tauj);
                     tauj += h;
                 }
                 ti += h;

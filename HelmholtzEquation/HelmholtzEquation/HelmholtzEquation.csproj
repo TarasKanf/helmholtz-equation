@@ -46,7 +46,7 @@
     <Compile Include="Integrals\Integral.cs" />
     <Compile Include="Integrals\SystemOfIE.cs" />
     <Compile Include="LinearSystem\SLAE.cs" />
-    <Compile Include="Polynomials\TrigonPolynomial.cs" />
+    <Compile Include="Helpers\TrigonPolynomial.cs" />
     <Compile Include="Problem.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

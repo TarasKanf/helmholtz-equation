@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace HelmholtzEquation.Polynomials
+namespace HelmholtzEquation.Helpers
 {
     class TrigonPolynomial
     {
