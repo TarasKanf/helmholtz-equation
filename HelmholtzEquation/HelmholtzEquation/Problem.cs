@@ -40,24 +40,31 @@ namespace HelmholtzEquation
                 temp += h;
             }
             edgeR = new TrigonPolynomial(radius, n);
+            r = edgeR; // означає що x знаходиться на межі
             SmoothCore coreH11 = new SmoothCore(H1_1);
             SmoothCore coreH12 = new SmoothCore(H1_2);
             SmoothCore coreH2 = new SmoothCore(H2);
             SystemOfIE equation = new SystemOfIE(coreH11,coreH12,coreH2,imBoundaryCondition, realBoundaryCondition);            
-            double[] fi = equation.SolveWithSimpleMetodForPFwithWeakAndSmoothCore(n); // розв`язки інтегрального рівняння в точках t[j] = j*PI/N ,  j = 0, 2*N -1   
-            solution = FindSolution(fi,n,radiusToFindSolutionOn); // перша половина solution це реальна частина розвязку, а друга уявна
-            //
+            double[] fi = equation.SolveWithSimpleMetodForPFwithWeakAndSmoothCore(n); // розв`язки інтегрального рівняння в точках t[j] = j*PI/N ,  j = 0, 2*N -1  
+            // міняємо розташування точок x. Тобто шукатимемо розвязок на кривій з радіальною функцією radiusToFindSolutionOn
+            temp = 0;
+            for (int i = 0; i < 2 * n; i++)
+            {
+                radius[i] = radiusToFindSolutionOn(temp);
+                temp += h;
+            }
+            r = new TrigonPolynomial(radius, n); // означає що x знаходиться на кривій з рад. ф-єю  radiusToFindSolutionOn
+            // шукаємо розвязок на заданій кривій
+            solution = FindSolution(fi,n); // перша половина solution це реальна частина розвязку, а друга уявна
             return solution;
-        } 
-        private double[] FindSolution(double[] y,int n,Func<double,double> rTFSO)
+        }
+        private double[] FindSolution(double[] y, int n)
         {
-            double h = Math.PI/n;
+            double h = Math.PI / n;
             double[] solution = new double[4 * n];
             // TODO
             return solution;
         }
-        // TODO
-        // Тут повинна бути куча потрібних функцій H які передаватимемо в  SystemOfIE через делегати
         private double H1_1(double t, double tau)
         {
             double rx = r.Value(t);
@@ -67,14 +74,27 @@ namespace HelmholtzEquation
         private double H1_2(double t, double tau)
         {            
             double rx = r.Value(t);
-            double ry = edgeR.Value(tau);
-            // TODD
-            return 0;
+            double ry = edgeR.Value(tau);;
+            double z = Zfunc(rx,t,ry,tau);
+            double result = 0;
+            if (t != tau)
+            {
+                result = (S(z) + J0(z) * Math.Log(4.0 * Math.Pow(Math.Sin((t - tau) / 2.0), 2)
+                / (Math.E * realK * realK * (rx * rx + ry * ry - 2.0 * rx * ry * Math.Cos(t - tau)))) / 2.0)
+                / (Math.PI * 2.0);
+            }
+            else
+            {
+                z = ((rx - ry)<1e-5)?0:Zfunc(rx,t,ry,tau);
+                result = (S(z) + J0(z) *
+                    Math.Log(1.0 / (Math.E * realK * realK * Math.Pow(edgeR.Derivative(t), 2))) / 2.0)
+                    /(Math.PI*2.0);
+            }
+            return result;
         }
         private double H2(double t, double tau)
         {
-            // TODD
-            return 0;
+            return J0(Zfunc(r.Value(t), t, edgeR.Value(tau),tau))/4.0;
         }
         private double J0(double z)
         {

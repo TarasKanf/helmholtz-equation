@@ -15,7 +15,7 @@ namespace HelmholtzEquation
         {
             Console.WriteLine("Dirichlet problem for Helmholtz equation \n Enter N (N*2 = number of points):");
             int N = int.Parse(Console.ReadLine());
-            Problem pr = new Problem(EdgeRadius,imK,realK,ImBoundaryCondition,RealBoundaryCondition); // 
+            Problem pr = new Problem(EdgeRadius,realK,ImBoundaryCondition,RealBoundaryCondition); // 
             pr.Solve(N,CurveRadiusToFindSolution);
             int n = 2 * N;
             Console.WriteLine("\n  Accurate solution on some curve:");
@@ -45,11 +45,11 @@ namespace HelmholtzEquation
         }
         static double ImBoundaryCondition(double t)
         {
-            return 0;
+            return 1;
         }
         static double RealBoundaryCondition(double t)
         {
-            return 0;
+            return 1;
         }
         static double CurveRadiusToFindSolution(double t)
         {
