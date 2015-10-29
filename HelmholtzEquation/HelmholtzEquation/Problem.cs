@@ -92,6 +92,7 @@ namespace HelmholtzEquation
             }
             return result;
         }
+        // використовуватиметься також щоб побудувати розвязок 
         private double H2(double t, double tau)
         {
             return J0(Zfunc(r.Value(t), t, edgeR.Value(tau),tau))/4.0;
@@ -137,6 +138,14 @@ namespace HelmholtzEquation
                 i *= -1;                
             }
             return result*2.0/Math.PI;
+        }
+        // використовуватиметься тільки щоб побудувати розвязок 
+        private double H1(double t, double tau)
+        {            
+            double rx = r.Value(t);
+            double ry = edgeR.Value(tau);
+            double z = Zfunc(rx, t, ry, tau);
+            return -(2*(Math.Log(z/2.0) + gamma)*J0(z)/Math.PI + L(z))/4.0;
         }
     }
 }
