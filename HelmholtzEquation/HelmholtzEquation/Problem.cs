@@ -16,7 +16,7 @@ namespace HelmholtzEquation
         private Func<double, double> imBoundaryCondition, realBoundaryCondition;
         private double realK;
         // константа до якої обчислюватимуться нескіченні суми. Відповідає за точність обчислення функцій J0(), Y0()
-        private const int accuracyN = 20;
+        private const int accuracyN = 30;
         private const double gamma = 0.57721566490153;
         // і інші поля якщо потрібно
         public Problem(Func<double,double> _edgeRadius,double _realK,Func<double,double> _imBoundaryCondition,Func<double,double> _realBoundaryCondition)
@@ -83,6 +83,7 @@ namespace HelmholtzEquation
                  solution[i] = sum*Math.PI / n;
                  t += h;  
             }
+            // обчислюємо уявну частину
             for (int i = 2*n; i < 4*n; i++)
             {
                 sum = 0;
@@ -184,6 +185,18 @@ namespace HelmholtzEquation
             double ry = edgeR.Value(tau);
             double z = Zfunc(rx, t, ry, tau);
             return -(2*(Math.Log(z/2.0) + gamma)*J0(z)/Math.PI + L(z))/4.0;
+        }
+        // цей варіант функції H1 (реальна частина фундаметального розвязку) використовуватиметься для перевірики отриманого розвязку в основній програмі
+        public double H1(double t, double ry, double tau)
+        {
+            double rx = r.Value(t);            
+            double z = Zfunc(rx, t, ry, tau);
+            return -(2 * (Math.Log(z / 2.0) + gamma) * J0(z) / Math.PI + L(z)) / 4.0;
+        }
+        // цей варіант функції H2 (уявна частина фундаметального розвязку) використовуватиметься для перевірики отриманого розвязку в основній програмі
+        public double H2(double t,double ry, double tau)
+        {
+            return J0(Zfunc(r.Value(t), t, ry, tau)) / 4.0;
         }
     }
 }

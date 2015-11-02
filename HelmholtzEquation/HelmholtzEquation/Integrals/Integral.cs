@@ -49,10 +49,12 @@ namespace HelmholtzEquation.Integrals
             double sum = 0;
             for (int i = 1; i < n; i++)
             {
-                sum += Math.Cos(i * (s - sk)) / (double)i;
+                sum += Math.Cos(i * (s - sk)) / i;
             }
-            sum *= -1.0 / (double)n;
-            sum -= Math.Cos(n * (s - sk)) / (2.0 * n * n);
+            sum *= 2.0;
+            sum += 1;
+            sum += Math.Cos((s - sk)) / n;
+            sum *= -1.0 / (2.0 * n);
             return sum;
         }        
     }
