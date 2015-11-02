@@ -62,7 +62,45 @@ namespace HelmholtzEquation
         {
             double h = Math.PI / n;
             double[] solution = new double[4 * n];
-            // TODO
+            double t =0, tau =0; // t - відповідає за точку x в якій знаходимо розвязки, по змінній tau - інтегруємо
+            double sum = 0;
+            //обчислюємо реальну частину
+            for (int i = 0; i < 2*n; i++)
+            {
+                sum = 0;
+                tau = 0;
+                for (int j = 0; j < 2 * n; j++)
+                {
+                    sum += y[j] * H1(t, tau);
+                    tau += h;
+                }
+                tau = 0;
+                for (int j = 2*n; j < 4*n; j++)
+                {
+                    sum -= y[j] * H2(t, tau);
+                    tau += h;
+                }
+                 solution[i] = sum*Math.PI / n;
+                 t += h;  
+            }
+            for (int i = 2*n; i < 4*n; i++)
+            {
+                sum = 0;
+                tau = 0;
+                for (int j = 0; j < 2 * n; j++)
+                {
+                    sum += y[j] * H2(t, tau);
+                    tau += h;
+                }
+                tau = 0;
+                for (int j = 2 * n; j < 4 * n; j++)
+                {
+                    sum += y[j] * H1(t, tau);
+                    tau += h;
+                }
+                solution[i] = sum * Math.PI / n;
+                t += h;
+            }
             return solution;
         }
         private double H1_1(double t, double tau)

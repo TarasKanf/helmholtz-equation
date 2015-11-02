@@ -16,18 +16,29 @@ namespace HelmholtzEquation
             Console.WriteLine("Dirichlet problem for Helmholtz equation \n Enter N (N*2 = number of points):");
             int N = int.Parse(Console.ReadLine());
             Problem pr = new Problem(EdgeRadius,realK,ImBoundaryCondition,RealBoundaryCondition); // 
-            pr.Solve(N,CurveRadiusToFindSolution);
+            double[] sltn = pr.Solve(N,CurveRadiusToFindSolution);
             int n = 2 * N;
-            Console.WriteLine("\n  Accurate solution on some curve:");
+            Console.WriteLine("\n  Accurate REAL part of solution on some curve:");
             for (int i = 0; i < n; i++)
             {
                 //Console.Write("{0}  ", AccurateSolution(i * Math.PI / N));
             }
-            Console.WriteLine("\n Received solution on some curve:");
+            Console.WriteLine("\n Received REAL part of solution on some curve:");
             for (int i = 0; i < n; i++)
             {
-                //Console.Write("{0}  ", pr.ui[i]);
+                Console.Write("{0}  ", sltn[i]);
+            }            
+            Console.WriteLine("\n  Accurate IMAGINE part of solution on some curve:");
+            for (int i = 0; i < n; i++)
+            {
+                //Console.Write("{0}  ", AccurateSolution(i * Math.PI / N));
             }
+            Console.WriteLine("\n Received  IMAGINE part of solution on some curve:");
+            for (int i = n; i < 2*n; i++)
+            {
+                Console.Write("{0}  ", sltn[i]);
+            }
+            Console.WriteLine();
             double maxDeviation = 0;//Math.Abs(pr.ui[0] - AccurateSolution(0));
             for (int i = 1; i < 2 * N; i++)
             {
@@ -37,23 +48,24 @@ namespace HelmholtzEquation
             Console.ReadKey();
         }
         // 
-        // TODO
+        // 
         // функції які потрібно передати в Problem
+        // поки що тут функції які я собі вигадав і не знаю який точний розвязок для них повинен бути щоб звірити. 
         static double EdgeRadius(double t)
         {
             return 1; // може бути фукція що задає радіус
         }
         static double ImBoundaryCondition(double t)
         {
-            return 1;
+            return 0;
         }
         static double RealBoundaryCondition(double t)
         {
-            return 1;
+            return 5;
         }
         static double CurveRadiusToFindSolution(double t)
         {
-            return 2;
+            return 1.01;
         }
     }
 }
