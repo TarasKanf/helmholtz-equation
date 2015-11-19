@@ -24,7 +24,7 @@ namespace HelmholtzEquation.Integrals
         {
             N = _n;
             //формуємо вектор що задає праву чатину рівняння праву чатину рівння
-            g = new double[4 * N]; // 2*N значення з ффункцією g1 і  2*N значення з ффункцією g2
+            g = new double[4 * N]; // 2*N значення з функцією g1 і  2*N значення з функцією g2
             double temp =0;
             h = (b - a) / (2*N); 
             for (int i = 0; i < 2 * N; i++)
@@ -73,7 +73,7 @@ namespace HelmholtzEquation.Integrals
                 for (int j = 2*N; j < 4 * N; j++)
                 {
                     // тут мінус бо в першому рівнянні перед другим інтегралом стоїть "-" 
-                    A[i, j] = -Math.PI * H2.GetValue(tauj) / N;
+                    A[i, j] = - Math.PI * H2.GetValue(tauj) / N;
                     tauj += h;
                 }
                 ti += h;

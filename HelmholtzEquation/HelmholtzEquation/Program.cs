@@ -10,7 +10,7 @@ namespace HelmholtzEquation
     {
         // для зміни умові задачі потрібно змінити imK,realK,EdgeRadius,ImBoundaryCondition,RealBoundaryCondition
         // Для отримання розвязку на іншій кривій потрібно змінити CurveRadiusToFindSolution
-        static double imK= 1,realK =1; 
+        static double realK =1; 
         static Problem prblm;
         static void Main(string[] args)
         {
@@ -60,7 +60,7 @@ namespace HelmholtzEquation
         // 
         static double EdgeRadius(double t)
         {
-            return 1; // може бути фукція що задає радіус
+            return 1.5; // може бути фукція що задає радіус
         }
         static double ImBoundaryCondition(double t)
         {
