@@ -11,26 +11,26 @@ namespace HelmholtzEquation.Integrals
         private double[,] A; // матриця 
         private double[] g; // права частина
         private SmoothCore H11, H12, H2;
-        private Func<double,double> g1,g2; // реальна і уявна частина значень на границі Г
-        public SystemOfIE(SmoothCore _H11, SmoothCore _H12,SmoothCore _H2,Func<double,double> _g1,Func<double,double> _g2)
+        private Func<double,double> gReal,gIm; // реальна і уявна частина значень на границі Г
+        public SystemOfIE(SmoothCore _H11, SmoothCore _H12,SmoothCore _H2,Func<double,double> _gReal,Func<double,double> _gIm)
         {
             H11 = _H11;
             H12 = _H12;
             H2 = _H2;
-            g1 = _g1;
-            g2 = _g2;
+            gReal = _gReal;
+            gIm = _gIm;
         }
         public double[] SolveWithSimpleMetodForPFwithWeakAndSmoothCore(int _n) 
         {
             N = _n;
             //формуємо вектор що задає праву чатину рівняння праву чатину рівння
-            g = new double[4 * N]; // 2*N значення з функцією g1 і  2*N значення з функцією g2
+            g = new double[4 * N]; // 2*N значення з функцією gReal і  2*N значення з функцією gIm
             double temp =0;
             h = (b - a) / (2*N); 
             for (int i = 0; i < 2 * N; i++)
             {
-                g[i] = g1(temp);
-                g[i + 2 * N] = g2(temp);
+                g[i] = gReal(temp);
+                g[i + 2 * N] = gIm(temp);
                 temp += h;
             }
             // формуємо матрицю A, тобто дискретний вигляд системи інтегральних рівнянь

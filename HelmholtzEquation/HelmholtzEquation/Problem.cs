@@ -19,7 +19,7 @@ namespace HelmholtzEquation
         private const int accuracyN = 30;
         private const double gamma = 0.57721566490153;
         // і інші поля якщо потрібно
-        public Problem(Func<double,double> _edgeRadius,double _realK,Func<double,double> _imBoundaryCondition,Func<double,double> _realBoundaryCondition)
+        public Problem(Func<double, double> _edgeRadius, double _realK, Func<double, double> _realBoundaryCondition, Func<double, double> _imBoundaryCondition)
         {
             edgeRadius = _edgeRadius;
             imBoundaryCondition = _imBoundaryCondition;
@@ -31,7 +31,6 @@ namespace HelmholtzEquation
             int n = _n; // кількість точок рівна 2*n
             double[] solution;// розвязки на замкнутій зірковій кривій з кроком 2*PI/(2*n)
             // Шукаємо розвязок створивши еземпляр класу SystemOfIE (system of integral equations) передавши в нього відповідіні ядра(SmoothCore) 
-             // щось в цьому стилі 
             double h = Math.PI / n;                       
             double[] radius = new double[2 * n];
             double temp = 0; 
@@ -45,11 +44,10 @@ namespace HelmholtzEquation
             SmoothCore coreH11 = new SmoothCore(H1_1);
             SmoothCore coreH12 = new SmoothCore(H1_2);
             SmoothCore coreH2 = new SmoothCore(H2);
-            SystemOfIE equation = new SystemOfIE(coreH11,coreH12,coreH2,imBoundaryCondition, realBoundaryCondition); 
+            SystemOfIE equation = new SystemOfIE(coreH11,coreH12,coreH2, realBoundaryCondition,imBoundaryCondition); 
             // перша половина fi -  реальна частина, друга уявна
             double[] fi = equation.SolveWithSimpleMetodForPFwithWeakAndSmoothCore(n); // розв`язки інтегрального рівняння в точках t[j] = j*PI/N ,  j = 0, 2*N -1  
             // міняємо розташування точок x. Тобто шукатимемо розвязок на кривій з радіальною функцією radiusToFindSolutionOn
-            temp = 0;
             for (int i = 0; i < 2 * n; i++)
             {
                 temp = i * h;
@@ -59,52 +57,29 @@ namespace HelmholtzEquation
             // шукаємо розвязок на заданій кривій
             solution = FindSolution(fi,n); // перша половина solution це реальна частина розвязку, а друга уявна
             return solution;
-        }
+        }        
         private double[] FindSolution(double[] y, int n)
         {
             double h = Math.PI / n;
             double[] solution = new double[4 * n];
             double t =0, tau =0; // t - відповідає за точку x в якій знаходимо розвязки, по змінній tau - інтегруємо
-            double sum = 0;
-            //обчислюємо реальну частину
+            double sumReal = 0;
+            double sumImagine = 0;            
             for (int i = 0; i < 2*n; i++)
             {
-                sum = 0;
+                sumReal = 0;
+                sumImagine = 0;
                 tau = 0;
                 t = i * h;
                 for (int j = 0; j < 2 * n; j++)
                 {
                     tau = j*h;
-                    sum += y[j] * H1(t, tau);                    
-                }
-                tau = 0;
-                for (int j = 2*n; j < 4*n; j++)
-                {
-                    tau = j * h;
-                    sum -= y[j] * H2(t, tau);                    
-                }
-                solution[i] = sum*Math.PI / n;                   
-            }
-            // обчислюємо уявну частину
-            t = 0;
-            for (int i = 2*n; i < 4*n; i++)
-            {
-                sum = 0;
-                tau = 0;
-                for (int j = 0; j < 2 * n; j++)
-                {
-                    sum += y[j] * H2(t, tau);
-                    tau += h;
-                }
-                tau = 0;
-                for (int j = 2 * n; j < 4 * n; j++)
-                {
-                    sum += y[j] * H1(t, tau);
-                    tau += h;
-                }
-                solution[i] = sum * Math.PI / n;
-                t += h;
-            }
+                    sumReal +=    y[j] * H1(t, tau) - y[j + 2 * n] * H2(t, tau);
+                    sumImagine += y[j] * H2(t, tau) + y[j + 2 * n] * H1(t, tau);
+                }                
+                solution[i] = sumReal*Math.PI / n; // уявний розв`язок в точці ti
+                solution[i + 2 * n] = sumImagine * Math.PI / n;  // реальний розв`язок в точці ti
+            }           
             return solution;
         }
         private double H1_1(double t, double tau)
@@ -195,7 +170,7 @@ namespace HelmholtzEquation
         {
             double rx = edgeR.Value(t);            
             double z = Zfunc(rx, t, ry, tau);
-            return -(2 * (Math.Log(z / 2.0) + gamma) * J0(z) / Math.PI + L(z)) / 4.0;
+            return -(2.0 * (Math.Log(z / 2.0) + gamma) * J0(z) / Math.PI + L(z)) / 4.0;
         }
         // цей варіант функції H2 (уявна частина фундаметального розвязку) 
         //використовуватиметься для перевірики отриманого розвязку в основній програмі, тобто задає уявне значення на межі        

@@ -16,7 +16,7 @@ namespace HelmholtzEquation
         {
             Console.WriteLine("Dirichlet problem for Helmholtz equation \n Enter N (N*2 = number of points):");
             int N = int.Parse(Console.ReadLine());
-            prblm = new Problem(EdgeRadius,realK,ImBoundaryCondition,RealBoundaryCondition); // 
+            prblm = new Problem(EdgeRadius, realK, RealBoundaryCondition, ImBoundaryCondition); // 
             double[] sltn = prblm.Solve(N,CurveRadiusToFindSolution);
             int n = 2 * N;
             Console.WriteLine("\n  Accurate REAL part of solution on some curve:");
@@ -49,7 +49,7 @@ namespace HelmholtzEquation
             maxDeviation = Math.Abs(sltn[n] - ImAccurateSolution(0));
             for (int i = n; i < 2*n; i++)
             {
-                maxDeviation = Math.Max(maxDeviation, Math.Abs(sltn[i] - RealAccurateSolution((i-n) * Math.PI / N)));
+                maxDeviation = Math.Max(maxDeviation, Math.Abs(sltn[i] - ImAccurateSolution((i-n) * Math.PI / N)));
             }
             Console.WriteLine("\n Max deviation of imagine part of solution = {0}", maxDeviation);
             Console.ReadKey();
