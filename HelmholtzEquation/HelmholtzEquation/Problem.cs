@@ -68,17 +68,25 @@ namespace HelmholtzEquation
             for (int i = 0; i < 2*n; i++)
             {
                 sumReal = 0;
-                sumImagine = 0;
-                tau = 0;
+                sumImagine = 0;                
                 t = i * h;
+                //for (int j = 0; j < 2 * n; j++)
+                //{
+                //    tau = j * h;
+                //    sumReal += y[j] * H1(t, tau) - y[j + 2 * n] * H2(t, tau);
+                //    sumImagine += y[j] * H2(t, tau) + y[j + 2 * n] * H1(t, tau);
+                //}
+                //solution[i] = sumReal * Math.PI / n; // реальний розв`язок в точці ti
+                //solution[i + 2 * n] = sumImagine * Math.PI / n;  // уявний розв`язок в точці ti
+
                 for (int j = 0; j < 2 * n; j++)
                 {
-                    tau = j*h;
-                    sumReal +=    y[j] * H1(t, tau) - y[j + 2 * n] * H2(t, tau);
-                    sumImagine += y[j] * H2(t, tau) + y[j + 2 * n] * H1(t, tau);
-                }                
-                solution[i] = sumReal*Math.PI / n; // уявний розв`язок в точці ti
-                solution[i + 2 * n] = sumImagine * Math.PI / n;  // реальний розв`язок в точці ti
+                    tau = j * h;
+                    sumReal += y[j] * (H1_1(t, tau) * 2.0 * Math.PI * Integral.CoefficientForWeakSingular(t, n, tau) + H1_2(t, tau) * Math.PI / n) - y[j + 2 * n] * H2(t, tau) * Math.PI / n;
+                    sumImagine += y[j] * H2(t, tau) * Math.PI / n + y[j + 2 * n] * (H1_1(t, tau) * 2.0 * Math.PI * Integral.CoefficientForWeakSingular(t, n, tau) + H1_2(t, tau) * Math.PI / n);
+                }
+                solution[i] = sumReal; // реальний розв`язок в точці ti
+                solution[i + 2 * n] = sumImagine;  // уявний розв`язок в точці ti
             }           
             return solution;
         }
@@ -94,7 +102,7 @@ namespace HelmholtzEquation
             double ry = edgeR.Value(tau);;
             double z = Zfunc(rx,t,ry,tau);
             double result = 0;
-            if (Math.Abs(t - tau)>1e-7)
+            if (Math.Abs(t - tau)>1e-10)
             {
                 result = (S(z) + J0(z) * Math.Log(4.0 * Math.Pow(Math.Sin((t - tau) / 2.0), 2)
                 / (Math.E * realK * realK * (rx * rx + ry * ry - 2.0 * rx * ry * Math.Cos(t - tau)))) / 2.0)
@@ -138,7 +146,7 @@ namespace HelmholtzEquation
         }
         private double S(double z)
         {
-            return J0(z)*(Math.Log(2) - gamma) - Math.PI*L(z)/2.0;
+            return J0(z)*(Math.Log(2.0) - gamma) - Math.PI*L(z)/2.0;
         }
         private double L(double z)
         {
@@ -162,7 +170,7 @@ namespace HelmholtzEquation
             double rx = r.Value(t);
             double ry = edgeR.Value(tau);
             double z = Zfunc(rx, t, ry, tau);
-            return -(2*(Math.Log(z/2.0) + gamma)*J0(z)/Math.PI + L(z))/4.0;
+            return -(2.0*(Math.Log(z/2.0) + gamma)*J0(z)/Math.PI + L(z))/4.0;
         }
         // цей варіант функції H1 (реальна частина фундаметального розвязку) 
         //використовуватиметься для перевірики отриманого розвязку в основній програмі, тобто задає уявне значення на межі

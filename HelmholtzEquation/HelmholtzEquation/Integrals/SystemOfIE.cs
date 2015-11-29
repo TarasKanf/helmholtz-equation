@@ -23,15 +23,15 @@ namespace HelmholtzEquation.Integrals
         public double[] SolveWithSimpleMetodForPFwithWeakAndSmoothCore(int _n) 
         {
             N = _n;
-            //формуємо вектор що задає праву чатину рівняння праву чатину рівння
+            //формуємо вектор що задає праву чатину рівняння праву чатину рівняння
             g = new double[4 * N]; // 2*N значення з функцією gReal і  2*N значення з функцією gIm
             double temp =0;
-            h = (b - a) / (2*N); 
+            h = (b - a)/(2.0 * N);
             for (int i = 0; i < 2 * N; i++)
             {
+                temp = i*h;
                 g[i] = gReal(temp);
-                g[i + 2 * N] = gIm(temp);
-                temp += h;
+                g[i + 2 * N] = gIm(temp);                
             }
             // формуємо матрицю A, тобто дискретний вигляд системи інтегральних рівнянь
             A = new double[4 * N, 4 * N];
@@ -39,61 +39,23 @@ namespace HelmholtzEquation.Integrals
             // визначаємо кокфіцієнти що відповідатиметь на miu1(tauj)
             for (int i = 0; i < 2 * N; i++)
             {
-                H12.Prepare(ti);
+                ti = i * h;
                 H11.Prepare(ti);
-                tauj = 0;
+                H12.Prepare(ti);
+                H2.Prepare(ti);               
                 // коефіцієнти будуються за тригонометричними квадратурними формулами
                 for (int j = 0; j < 2 * N; j++)
                 {
-                    A[i, j] = Math.PI * H12.GetValue(tauj) / N;
-                    // перевірити чи треба передавати саме j
-                    A[i, j] = A[i, j] + H11.GetValue(tauj) * 2.0 * Math.PI * Integral.CoefficientForWeakSingular(H11.Param, j, N, tauj);
-                    tauj += h;
-                }
-                ti += h;
-            }
-            ti = 0;
-            for (int i = 2 * N; i < 4 * N; i++)
-            {
-                H2.Prepare(ti);
-                tauj = 0;
-                for (int j = 0; j < 2 * N; j++)
-                {
-                    A[i, j] = Math.PI * H2.GetValue(tauj) / N;
-                    tauj += h;
-                }
-                ti += h;
-            }
-            // визначаємо кокфіцієнти що відповідатиметь на miu2(tauj)
-            ti = 0;
-            for (int i = 0; i < 2 * N; i++)
-            {
-                H2.Prepare(ti);
-                tauj = 0;
-                for (int j = 2*N; j < 4 * N; j++)
-                {
-                    // тут мінус бо в першому рівнянні перед другим інтегралом стоїть "-" 
-                    A[i, j] = - Math.PI * H2.GetValue(tauj) / N;
-                    tauj += h;
-                }
-                ti += h;
-            }
-            ti = 0;
-            for (int i = 2*N; i < 4 * N; i++)
-            {
-                H12.Prepare(ti);
-                H11.Prepare(ti);
-                tauj = 0;
-                // коефіцієнти будуються за тригонометричними квадратурними формулами
-                for (int j = 2*N; j < 4 * N; j++)
-                {
-                    A[i, j] = Math.PI * H12.GetValue(tauj) / N;
-                    // перевірити чи треба передавати саме j
-                    A[i, j] = A[i, j] + H11.GetValue(tauj) * 2.0 * Math.PI * Integral.CoefficientForWeakSingular(H11.Param, j-2*N, N, tauj);
-                    tauj += h;
-                }
-                ti += h;
-            }
+                    tauj = j * h;
+                    // перше рівняння
+                    A[i, j] = A[i + 2 * N, j + 2 * N] =
+                        Math.PI * H12.GetValue(tauj) / N +
+                        H11.GetValue(tauj) * 2.0 * Math.PI * Integral.CoefficientForWeakSingular(H11.Param, N, tauj);
+                    A[i, j + 2 * N] = -Math.PI * H2.GetValue(tauj) / N;
+                    // друге рівняння
+                    A[i + 2 * N, j] = Math.PI * H2.GetValue(tauj) / N;
+                }               
+            }           
             return SLAE.LU_methodSolving(A,g,4*N);
         }
     }
