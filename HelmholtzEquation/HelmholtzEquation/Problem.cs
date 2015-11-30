@@ -176,7 +176,7 @@ namespace HelmholtzEquation
         //використовуватиметься для перевірики отриманого розвязку в основній програмі, тобто задає уявне значення на межі
         public double H1(double t, double ry, double tau)
         {
-            double rx = edgeR.Value(t);            
+            double rx = r.Value(t);            
             double z = Zfunc(rx, t, ry, tau);
             return -(2.0 * (Math.Log(z / 2.0) + gamma) * J0(z) / Math.PI + L(z)) / 4.0;
         }
@@ -184,7 +184,7 @@ namespace HelmholtzEquation
         //використовуватиметься для перевірики отриманого розвязку в основній програмі, тобто задає уявне значення на межі        
         public double H2(double t,double ry, double tau)
         {
-            return J0(Zfunc(edgeR.Value(t), t, ry, tau)) / 4.0;
+            return J0(Zfunc(r.Value(t), t, ry, tau)) / 4.0;
         }
     }
 }
