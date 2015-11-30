@@ -48,18 +48,18 @@ namespace HelmholtzEquation.Integrals
         {
             //якщо ln((4/e)*(...))
             double sum = 0;
-            double delta_t =((t - ti) < 1e-7) ? 0 : t - ti;
+            double delta_t = (Math.Abs(t - ti) < 1e-10) ? 0 : t - ti;
             for (int i = 1; i < n; i++)
             {
                 sum += Math.Cos(i * (delta_t)) / i;
             }
             sum *= 2.0;
             sum += 1.0;
-            sum += Math.Cos((delta_t)) / n; // повинне бути (n*(s - sk)) чи ((s - sk)) ???
+            sum += Math.Cos(n * (delta_t)) / n;
             sum *= -1.0 / (2.0 * n);
             return sum;
-            
-            //// якщо ln((4)*(...))
+
+            // якщо ln((4)*(...))
             //double sum = 0;
             //for (int i = 1; i < n; i++)
             //{

@@ -73,7 +73,7 @@ namespace HelmholtzEquation
         }
         static double CurveRadiusToFindSolution(double t)
         {
-            return 4;
+            return 2;
         }
         static double ImAccurateSolution(double t)
         {

@@ -39,7 +39,7 @@ namespace HelmholtzEquation
                 temp = i * h; // щоб похибка не накопичувалась
                 radius[i] = edgeRadius(temp);                
             }
-            edgeR = new TrigonPolynomial(radius, n);
+            edgeR = new TrigonPolynomial(radius, n);           
             r = edgeR; // означає що x знаходиться на межі
             SmoothCore coreH11 = new SmoothCore(H1_1);
             SmoothCore coreH12 = new SmoothCore(H1_2);
@@ -70,23 +70,23 @@ namespace HelmholtzEquation
                 sumReal = 0;
                 sumImagine = 0;                
                 t = i * h;
-                //for (int j = 0; j < 2 * n; j++)
-                //{
-                //    tau = j * h;
-                //    sumReal += y[j] * H1(t, tau) - y[j + 2 * n] * H2(t, tau);
-                //    sumImagine += y[j] * H2(t, tau) + y[j + 2 * n] * H1(t, tau);
-                //}
-                //solution[i] = sumReal * Math.PI / n; // реальний розв`язок в точці ti
-                //solution[i + 2 * n] = sumImagine * Math.PI / n;  // уявний розв`язок в точці ti
-
                 for (int j = 0; j < 2 * n; j++)
                 {
                     tau = j * h;
-                    sumReal += y[j] * (H1_1(t, tau) * 2.0 * Math.PI * Integral.CoefficientForWeakSingular(t, n, tau) + H1_2(t, tau) * Math.PI / n) - y[j + 2 * n] * H2(t, tau) * Math.PI / n;
-                    sumImagine += y[j] * H2(t, tau) * Math.PI / n + y[j + 2 * n] * (H1_1(t, tau) * 2.0 * Math.PI * Integral.CoefficientForWeakSingular(t, n, tau) + H1_2(t, tau) * Math.PI / n);
+                    sumReal += y[j] * H1(t, tau) - y[j + 2 * n] * H2(t, tau);
+                    sumImagine += y[j] * H2(t, tau) + y[j + 2 * n] * H1(t, tau);
                 }
-                solution[i] = sumReal; // реальний розв`язок в точці ti
-                solution[i + 2 * n] = sumImagine;  // уявний розв`язок в точці ti
+                solution[i] = sumReal * Math.PI / n; // реальний розв`язок в точці ti
+                solution[i + 2 * n] = sumImagine * Math.PI / n;  // уявний розв`язок в точці ti
+
+                //for (int j = 0; j < 2 * n; j++)
+                //{
+                //    tau = j * h;
+                //    sumReal += y[j] * (H1_1(t, tau) * 2.0 * Math.PI * Integral.CoefficientForWeakSingular(t, n, tau) + H1_2(t, tau) * Math.PI / n) - y[j + 2 * n] * H2(t, tau) * Math.PI / n;
+                //    sumImagine += y[j] * H2(t, tau) * Math.PI / n + y[j + 2 * n] * (H1_1(t, tau) * 2.0 * Math.PI * Integral.CoefficientForWeakSingular(t, n, tau) + H1_2(t, tau) * Math.PI / n);
+                //}
+                //solution[i] = sumReal; // реальний розв`язок в точці ti
+                //solution[i + 2 * n] = sumImagine;  // уявний розв`язок в точці ti
             }           
             return solution;
         }
@@ -110,9 +110,9 @@ namespace HelmholtzEquation
             }
             else
             {
-                z = ((rx - ry)<1e-10)?0:z;
+                z = (Math.Abs(rx - ry)<1e-10)?0:z;
                 result = (S(z) + J0(z) *
-                    Math.Log(1.0 / (Math.E * realK * realK * Math.Pow(edgeR.Derivative(t), 2))) / 2.0)
+                    Math.Log(1.0 / (Math.E * realK * realK * (Math.Pow(r.Value(t),2) + Math.Pow(r.Derivative(t), 2)))) / 2.0)
                     /(Math.PI*2.0);
             }
             return result;
