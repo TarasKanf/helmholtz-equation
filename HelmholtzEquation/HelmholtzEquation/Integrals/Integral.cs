@@ -55,7 +55,7 @@ namespace HelmholtzEquation.Integrals
             }
             sum *= 2.0;
             sum += 1.0;
-            sum += Math.Cos(n * (delta_t)) / n;
+            sum += Math.Cos(n*(delta_t)) / n;
             sum *= -1.0 / (2.0 * n);
             return sum;
 

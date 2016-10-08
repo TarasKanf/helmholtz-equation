@@ -11,6 +11,7 @@ namespace HelmholtzEquation
         // для зміни умові задачі потрібно змінити imK,realK,EdgeRadius,ImBoundaryCondition,RealBoundaryCondition
         // Для отримання розвязку на іншій кривій потрібно змінити CurveRadiusToFindSolution
         static double realK =0.1;
+        //static double outsidePointR = 1, outsidePointT = 3*Math.PI/2.0; 
         static double outsidePointR = 0.5, outsidePointT = 0;
         static Problem prblm;
         static void Main(string[] args)
@@ -24,22 +25,12 @@ namespace HelmholtzEquation
             for (int i = 0; i < n; i++)
             {
                 Console.WriteLine("{0} \t {1}", RealAccurateSolution(i * Math.PI / N), sltn[i]);
-            }
-            //Console.WriteLine("\n Received REAL part of solution on some curve:");
-            //for (int i = 0; i < n; i++)
-            //{
-            //    Console.Write("{0}  ", sltn[i]);
-            //}            
+            }        
             Console.WriteLine("\n  IMAGINE part of solution on some curve: \n Accurate        \t  Received ");
             for (int i = 0; i < n; i++)
             {
                 Console.WriteLine("{0} \t {1} ", ImAccurateSolution(i * Math.PI / N), sltn[i + n]);
             }
-            //Console.WriteLine("\n Received  IMAGINE part of solution on some curve:");
-            //for (int i = n; i < 2*n; i++)
-            //{
-            //    Console.Write("{0}  ", sltn[i]);
-            //}
             Console.WriteLine();
             double maxDeviation = Math.Abs(sltn[0] - RealAccurateSolution(0));
             for (int i = 1; i < n; i++)
@@ -62,13 +53,16 @@ namespace HelmholtzEquation
         static double EdgeRadius(double t)
         {
             return 1; // може бути фукція що задає радіус
+            //return Math.Sqrt(1 - 2*Math.Pow(Math.Sin(t),3) + Math.Pow(Math.Sin(t),4));
         }
         static double ImBoundaryCondition(double t)
         {
+            //return 0;
             return prblm.H2(t,outsidePointR,outsidePointT);  // точка y (r = 0.5 , t (кут) = 0) належить обмеженій області D в якій ми НЕ шукаємо розвязок
         }
         static double RealBoundaryCondition(double t)
         {
+            //return 5;
             return prblm.H1(t, outsidePointR, outsidePointT);  // точка y (r = 0.5 , t (кут) = 0) належить обмеженій області D в якій ми НЕ шукаємо розвязок
         }
         static double CurveRadiusToFindSolution(double t)
