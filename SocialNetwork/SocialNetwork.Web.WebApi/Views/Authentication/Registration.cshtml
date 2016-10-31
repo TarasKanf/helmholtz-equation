@@ -1,0 +1,81 @@
+﻿@model SocialNetwork.Domain.DataTransferObjects.RegistrationDTO
+@{
+    ViewBag.Title = "Registration";
+}
+
+@section Styles
+{
+    <link href="@Url.Content("~/Content/authentication.css")" rel="stylesheet" type="text/css" />
+}
+
+
+@using (Html.BeginForm("Register", "RegistrationApi", FormMethod.Post, new { id = "registrationForm", @class = "form-horizontal container", role = "form" }))
+{
+
+    /*@Html.AntiForgeryToken()*/
+    <br />
+    <div class="row">
+        <h2>Registration</h2>
+    </div>
+    <br />
+    <div class="row form-group">
+        @Html.LabelFor(m => m.FirstName, new { @class = "col-md-offset-3 col-md-2 control-label" })
+        <div class="col-md-2">
+            @Html.TextBoxFor(m => m.FirstName, new { @class = "form-control", @id = "first-name" })
+        </div>
+        @Html.ValidationMessageFor(m => m.FirstName, null, new { @class = "error" })
+    </div>
+    <div class="row form-group">
+        @Html.LabelFor(m => m.LastName, new { @class = "col-md-offset-3 col-md-2 control-label" })
+        <div class="col-md-2">
+            @Html.TextBoxFor(m => m.LastName, new { @class = "form-control", @id = "last-name" })
+        </div>
+        @Html.ValidationMessageFor(m => m.LastName, null, new { @class = "error" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Email, new { @class = "col-md-offset-3 col-md-2 control-label" })
+        <div class="col-md-2">
+            @Html.TextBoxFor(m => m.Email, new { @class = "form-control", @id = "e-mail" })
+        </div>
+        @Html.ValidationMessageFor(m => m.Email, null, new { @class = "error" })
+    </div>
+    <div class="row form-group">
+        @Html.LabelFor(m => m.UserName, new { @class = "col-md-offset-3 col-md-2 control-label" })
+        <div class="col-md-2">
+            @Html.TextBoxFor(m => m.UserName, new { @class = "form-control", @id = "login" })
+        </div>
+        @Html.ValidationMessageFor(m => m.UserName, null, new { @class = "error" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Password, new { @class = "col-md-offset-3 col-md-2 control-label" })
+        <div class="col-md-2">
+            @Html.PasswordFor(m => m.Password, new { @class = "form-control", @id = "password" })
+        </div>
+        @Html.ValidationMessageFor(m => m.Password, null, new { @class = "error" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.ConfirmPassword, new { @class = "col-md-offset-3 col-md-2 control-label" })
+        <div class="col-md-2">
+            @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control", @id = "confirm-password" })
+        </div>
+        @Html.ValidationMessageFor(m => m.ConfirmPassword, null, new { @class = "error" })
+    </div>
+    <div class="form-group">
+        <br />
+        <div align="center" s>
+            <input type="submit" class="btn btn-primary" id="regisrationBtn" value="Sign Up" />
+        </div>
+        <div id="listreg" class="errors"></div>
+    </div>
+}
+
+@section Scripts {
+    <script src="~/Scripts/registration.js"></script>
+    <script src="~/Scripts/jquery.validate-vsdoc.js"></script>
+    <script src="~/Scripts/jquery.validate.js"></script>
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+}
+
+

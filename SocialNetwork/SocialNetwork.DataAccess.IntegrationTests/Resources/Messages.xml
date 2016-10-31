@@ -1,0 +1,94 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ArrayOfMessage xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Message>
+    <Id>facb2404-a50c-4276-b198-90d7c20ca333</Id>
+    <SenderId>b9cd2950-c57b-46d0-9959-a94b3173fed5</SenderId>
+    <ReceiverId>d70ffc73-790b-40d3-bd65-0accfef2ecfa</ReceiverId>
+    <Data>hello vasuluna</Data>
+    <Date>2016-04-14T00:25:42.7814926+03:00</Date>
+  </Message>
+  <Message>
+    <Id>aca4a54a-5a21-4a0b-b830-85ad461481f0</Id>
+    <SenderId>b9cd2950-c57b-46d0-9959-a94b3173fed5</SenderId>
+    <ReceiverId>e7fc5949-208d-46c1-968f-f18083620c22</ReceiverId>
+    <Data>Прив?т =) </Data>
+    <Date>2016-04-14T00:27:28.5624167+03:00</Date>
+  </Message>
+  <Message>
+    <Id>8a0abf2e-1752-4416-854a-3ddb4820e011</Id>
+    <SenderId>20796a3a-15e4-4449-a6d7-b6265521d623</SenderId>
+    <ReceiverId>55b3a686-732d-48c9-a9a1-41113b182043</ReceiverId>
+    <Data />
+    <Date>2016-04-12T19:51:41.554291+03:00</Date>
+  </Message>
+  <Message>
+    <Id>0ab532ec-408d-49f2-a3fe-7e9b2c64b059</Id>
+    <SenderId>51db3b95-e9d2-40ed-ae53-8b9e53e15e6a</SenderId>
+    <ReceiverId>25edd533-7cfa-419d-b281-d34a3ff117e0</ReceiverId>
+    <Data>Hi!=)How are You?</Data>
+    <Date>2016-04-13T17:39:21.0918299+03:00</Date>
+  </Message>
+  <Message>
+    <Id>809cf406-3a81-4b11-a1ec-fe52c4f6efa1</Id>
+    <SenderId>5cd417cd-0a0e-430a-884a-5686fecf0c83</SenderId>
+    <ReceiverId>51db3b95-e9d2-40ed-ae53-8b9e53e15e6a</ReceiverId>
+    <Data>Hi, Sofija!=)My name is Roman!</Data>
+    <Date>2016-04-13T17:42:19.5242441+03:00</Date>
+  </Message>
+  <Message>
+    <Id>337bfd04-5fdd-44e1-95ee-e17895c41f34</Id>
+    <SenderId>51db3b95-e9d2-40ed-ae53-8b9e53e15e6a</SenderId>
+    <ReceiverId>5cd417cd-0a0e-430a-884a-5686fecf0c83</ReceiverId>
+    <Data>Hi!) How are You?)</Data>
+    <Date>2016-04-13T17:43:47.8638903+03:00</Date>
+  </Message>
+  <Message>
+    <Id>654fa5ad-2b32-4b0a-be29-175a3ca6cf01</Id>
+    <SenderId>51db3b95-e9d2-40ed-ae53-8b9e53e15e6a</SenderId>
+    <ReceiverId>5cd417cd-0a0e-430a-884a-5686fecf0c83</ReceiverId>
+    <Data />
+    <Date>2016-04-13T17:52:58.856311+03:00</Date>
+  </Message>
+  <Message>
+    <Id>f46ef738-2a6a-4c33-90f8-de92c443bbad</Id>
+    <SenderId>51db3b95-e9d2-40ed-ae53-8b9e53e15e6a</SenderId>
+    <ReceiverId>5cd417cd-0a0e-430a-884a-5686fecf0c83</ReceiverId>
+    <Data />
+    <Date>2016-04-13T18:13:27.6038856+03:00</Date>
+  </Message>
+  <Message>
+    <Id>ffc43f25-1b52-4205-af5f-03e64788d57f</Id>
+    <SenderId>51db3b95-e9d2-40ed-ae53-8b9e53e15e6a</SenderId>
+    <ReceiverId>5cd417cd-0a0e-430a-884a-5686fecf0c83</ReceiverId>
+    <Data>=)</Data>
+    <Date>2016-04-13T18:15:08.5653806+03:00</Date>
+  </Message>
+  <Message>
+    <Id>dbcba33d-f063-4e9c-9450-e92ac004ce65</Id>
+    <SenderId>c846da28-bec0-4a1d-b735-5697f5c853a1</SenderId>
+    <ReceiverId>b9cd2950-c57b-46d0-9959-a94b3173fed5</ReceiverId>
+    <Data>HI!</Data>
+    <Date>2016-04-14T02:38:48.2358511+03:00</Date>
+  </Message>
+  <Message>
+    <Id>07feaeb2-f331-423c-9bdc-c7e1a05bb52f</Id>
+    <SenderId>c846da28-bec0-4a1d-b735-5697f5c853a1</SenderId>
+    <ReceiverId>b9cd2950-c57b-46d0-9959-a94b3173fed5</ReceiverId>
+    <Data>How are you?</Data>
+    <Date>2016-04-14T02:39:09.6915183+03:00</Date>
+  </Message>
+  <Message>
+    <Id>9c7bbfd8-eaee-43cf-a547-a3f6bf434958</Id>
+    <SenderId>c846da28-bec0-4a1d-b735-5697f5c853a1</SenderId>
+    <ReceiverId>e7fc5949-208d-46c1-968f-f18083620c22</ReceiverId>
+    <Data>Hi, Ira!</Data>
+    <Date>2016-04-14T02:48:40.7064323+03:00</Date>
+  </Message>
+  <Message>
+    <Id>38a924f3-8aec-48d8-8d43-521968aead9f</Id>
+    <SenderId>c846da28-bec0-4a1d-b735-5697f5c853a1</SenderId>
+    <ReceiverId>e7fc5949-208d-46c1-968f-f18083620c22</ReceiverId>
+    <Data>My name is Sofija)</Data>
+    <Date>2016-04-14T03:57:31.6211962+03:00</Date>
+  </Message>
+</ArrayOfMessage>

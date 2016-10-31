@@ -1,0 +1,282 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="CommandExit" xml:space="preserve">
+    <value>exit</value>
+  </data>
+  <data name="CommandExport" xml:space="preserve">
+    <value>export</value>
+  </data>
+  <data name="CommandFind" xml:space="preserve">
+    <value>find</value>
+  </data>
+  <data name="CommandHelp" xml:space="preserve">
+    <value>help</value>
+  </data>
+  <data name="CommandLogIn" xml:space="preserve">
+    <value>log in</value>
+  </data>
+  <data name="CommandLogOut" xml:space="preserve">
+    <value>log out</value>
+  </data>
+  <data name="CommandSend" xml:space="preserve">
+    <value>send</value>
+  </data>
+  <data name="CommandSignUp" xml:space="preserve">
+    <value>sign up</value>
+  </data>
+  <data name="ConfigStoragePath" xml:space="preserve">
+    <value>XmlPath</value>
+  </data>
+  <data name="ErrorDoubleLogIn" xml:space="preserve">
+    <value>ERROR : Firstly log out, than you will be able to log in"</value>
+  </data>
+  <data name="ErrorUnknownFind" xml:space="preserve">
+    <value>ERROR: Expected argument -u|--user or   -m|--message</value>
+  </data>
+  <data name="ErrorUnknownSend" xml:space="preserve">
+    <value>ERROR : Must be "send -m|--message"</value>
+  </data>
+  <data name="ErrorUnkownExport" xml:space="preserve">
+    <value>ERROR : Must be "export -u|--user   -m|--message  -f|--file=&lt;file_name&gt;"</value>
+  </data>
+  <data name="InfoLogin" xml:space="preserve">
+    <value>Login :</value>
+  </data>
+  <data name="InfoEndedSignUp" xml:space="preserve">
+    <value>User successfully registred</value>
+  </data>
+  <data name="InfoFirstName" xml:space="preserve">
+    <value>First name : </value>
+  </data>
+  <data name="InfoFirsUsage" xml:space="preserve">
+    <value>Enter "log in" or "sign up". To get available command list enter 'help'</value>
+  </data>
+  <data name="InfoGreeting" xml:space="preserve">
+    <value>Welcome to our social network</value>
+  </data>
+  <data name="InfoLastName" xml:space="preserve">
+    <value>Last name : </value>
+  </data>
+  <data name="InfoMessageEntering" xml:space="preserve">
+    <value>Enter message. Must end with</value>
+  </data>
+  <data name="InfoMessageSuccessfullySend" xml:space="preserve">
+    <value>Message was successfully sent</value>
+  </data>
+  <data name="InfoNewCommandLine" xml:space="preserve">
+    <value>&gt; </value>
+  </data>
+  <data name="InfoPassword" xml:space="preserve">
+    <value>Password : </value>
+  </data>
+  <data name="InfoStartedSignUp" xml:space="preserve">
+    <value>Started signing up user</value>
+  </data>
+  <data name="UsageExit" xml:space="preserve">
+    <value>exit</value>
+  </data>
+  <data name="UsageExport" xml:space="preserve">
+    <value>export -u|--user   -m|--message  -f|--file=&lt;file_name&gt;</value>
+  </data>
+  <data name="UsageFind" xml:space="preserve">
+    <value>find [-u|--user  -e|--email=&lt;user_emai&gt;]   [-m|--message  -r|--received  -s|--sended]</value>
+  </data>
+  <data name="UsageHelp" xml:space="preserve">
+    <value>help</value>
+  </data>
+  <data name="UsageLog" xml:space="preserve">
+    <value>log in/out</value>
+  </data>
+  <data name="UsageSend" xml:space="preserve">
+    <value>send -m|--message  -e|--email=&lt;user_email&gt;</value>
+  </data>
+  <data name="UsageSign" xml:space="preserve">
+    <value>sign up</value>
+  </data>
+  <data name="UnknownCommand" xml:space="preserve">
+    <value>ERROR: Unknown command or some argument wasn`t recognized</value>
+  </data>
+  <data name="InfoDataExportedToCVS" xml:space="preserve">
+    <value>Data was successfully exported to {0}.cvs file in "{1}" directory.</value>
+  </data>
+  <data name="CommandFriends" xml:space="preserve">
+    <value>friends</value>
+  </data>
+  <data name="ErrorWrongParams" xml:space="preserve">
+    <value>ERROR: Something wrong with command parameters. Try '--help' or 'help' .</value>
+  </data>
+  <data name="UsageFriends" xml:space="preserve">
+    <value>friends [--mutual   -e|--email=&lt;user_email&gt;]</value>
+  </data>
+  <data name="CommandPath" xml:space="preserve">
+    <value>path</value>
+  </data>
+  <data name="ErrorNotValidEmail" xml:space="preserve">
+    <value>ERROR: Email isn`t correct.</value>
+  </data>
+  <data name="ErrorNotValidPassword" xml:space="preserve">
+    <value>ERROR: Password must have at least {0} symbols.</value>
+  </data>
+  <data name="ErrorUnknownUserEmail" xml:space="preserve">
+    <value>ERROR: User with this email wasn`t found.</value>
+  </data>
+  <data name="UsagePath" xml:space="preserve">
+    <value>path -e|--email=&lt;user_email&gt;</value>
+  </data>
+  <data name="ParserHelpOffer" xml:space="preserve">
+    <value>Try `--help' for more information.</value>
+  </data>
+  <data name="ParserOptionCommandInfo" xml:space="preserve">
+    <value>The command name to execute. In order to get all commands available to your authorized rights type 'help'</value>
+  </data>
+  <data name="ParserOptionEmail" xml:space="preserve">
+    <value>Sets user email for command</value>
+  </data>
+  <data name="ParserOptionFileName" xml:space="preserve">
+    <value>Sets file name to export in</value>
+  </data>
+  <data name="ParserOptionHelp" xml:space="preserve">
+    <value>Get help</value>
+  </data>
+  <data name="ParserOptionMessage" xml:space="preserve">
+    <value>Do this command with message</value>
+  </data>
+  <data name="ParserOptionMutual" xml:space="preserve">
+    <value>Command 'friends' will return all common friends between you and specified registred user</value>
+  </data>
+  <data name="ParserOptionRecieved" xml:space="preserve">
+    <value>Search would be done in received messages</value>
+  </data>
+  <data name="ParserOptionSended" xml:space="preserve">
+    <value>Search would be done in sended messages</value>
+  </data>
+  <data name="ParserOptionUser" xml:space="preserve">
+    <value>Do this command with user</value>
+  </data>
+  <data name="ErrorWhileDataTransfering" xml:space="preserve">
+    <value>ERROR : Some error heppaned while transfering data and getting response from server.</value>
+  </data>
+  <data name="InfoEmail" xml:space="preserve">
+    <value>Email :</value>
+  </data>
+  <data name="InfoMessageWasntSend" xml:space="preserve">
+    <value>Some error happened and message wasnt properly sent.</value>
+  </data>
+</root>

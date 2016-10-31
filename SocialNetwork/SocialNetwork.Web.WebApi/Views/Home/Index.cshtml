@@ -1,0 +1,98 @@
+﻿@{
+    ViewBag.Title = "Home";
+}
+
+
+@section Styles{
+    <link rel="stylesheet" href="~/Content/skel.css" />
+    <link rel="stylesheet" href="~/Content/style.css" />
+    <link rel="stylesheet" href="~/Content/style-xlarge.css" />
+}
+
+<!-- Banner -->
+<section id="banner" class="wrapper style1 special">
+    <h2>Hi! Welcome to SoneT</h2>
+    
+    <ul class="actions">
+        <li>
+            <a href="~/Authentication/Login" class="button big">Log In</a>
+        </li>
+    </ul>
+</section>
+
+<!-- Developers -->
+<section id="developers" class="wrapper style2 special">
+    <div >
+        <header class="major">
+            <h2>Our Developers</h2>
+        </header>
+        <section class="profiles ">
+            <div class="row">
+                <section class="1u 6u(medium) 12u$(xsmall) profile"></section>
+                <section class="1u 6u(medium) 12u$(xsmall)  3u profile">
+                    <img src="~/Images/roman.jpg" alt="profile_placeholder.gif" />
+                    <h4>Roman</h4>
+                </section>
+                <section class="1u 6u(medium) 12u$(xsmall) profile"></section>
+                <section class="1u 6u(medium) 12u$(xsmall) 3u profile">
+                    <img src="~/Images/ira.jpg" alt="profile_placeholder.gif" />
+                    <h4>Iryna</h4>
+                </section>
+                <section class="1u 6u(medium) 12u$(xsmall) profile"></section>
+                <section class="1u 6u(medium) 12u$(xsmall) profile">
+                    <img src="~/Images/taras.jpg" alt="profile_placeholder.gif" />
+                    <h4>Taras</h4>
+                </section>
+
+                <section class="1u 6u(medium) 12u$(xsmall) profile"></section>
+                <section class="1u 6u(medium) 12u$(xsmall) profile">
+                    <img src="~/Images/sofiya.png" alt="profile_placeholder.gif" />
+                    <h4>Sofiya</h4>
+                </section>
+                <section class="1u 6u(medium) 12u$(xsmall) profile"></section>
+                <section class="1u 6u(medium) 12u$(xsmall)  3u profile">
+                    <img src="~/Images/vasylyna.jpg" alt="profile_placeholder.gif" />
+                    <h4>Vasylyna</h4>
+                </section>
+
+            </div>
+        </section>
+    </div>
+</section>
+<!-- Feedback 
+<section id="feedback" class="wrapper style3 special">
+    <div class="container">
+        <header class="major">
+            <h2>Leave Us Your Message</h2>
+            <p>If you have some troubles or issues, we are kindly consider your feedback or answer to quenstions! :)</p>
+        </header>
+    </div>
+    <div class="container 50%">
+        <form action="#" method="post">
+            <div class="row uniform">
+                <div class="6u 12u$(small)">
+                    <input name="name" id="name" value="" placeholder="Name" type="text">
+                </div>
+                <div class="6u$ 12u$(small)">
+                    <input name="email" id="email" value="" placeholder="Email" type="email">
+                </div>
+                <div class="12u$">
+                    <textarea name="message" id="message" placeholder="Message" rows="6"></textarea>
+                </div>
+                <div class="12u$">
+                    <ul class="actions">
+                        <li><input value="Send Message" name="submit" id="btn" class="special big" type="submit"></li>
+                    </ul>
+                </div>
+                <ul id="posts"></ul>
+            </div>
+        </form>
+    </div>
+</section>-->
+
+@section Scripts{
+    <script src="~/Scripts/jquery.min.js"></script>
+    <script src="~/Scripts/skel.min.js"></script>
+    <script src="~/Scripts/skel-layers.min.js"></script>
+    <script src="~/Scripts/init.js"></script>
+}

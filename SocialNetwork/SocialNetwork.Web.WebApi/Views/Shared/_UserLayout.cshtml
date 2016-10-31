@@ -1,0 +1,25 @@
+﻿@if (ViewBag.IsAuthenticated)
+{
+    if (ViewBag.RoleAdmin)
+    {
+        
+    }
+    if (ViewBag.RoleUser)
+    {
+        <li>@Html.ActionLink("Profile", "Profile", "UserProfile", null, new { @class = "sectin-color" })</li>
+        <li>@Html.ActionLink("Write message", "UserMessages", "Home", null, new { @class = "sectin-color" })</li>
+    }
+    <script>
+        userName = "@ViewBag.Name";
+        loggedUserID = "@ViewBag.Id";
+    </script>
+
+    <li><a href="/logout">Log out</a></li>
+}
+else
+{
+    <li>@Html.ActionLink("Home page", "Index", "Home", null, new { @class = "sectin-color" })</li>
+    <li>@Html.ActionLink("Registration", "Registration", "Authentication", null, new { @class = "sectin-color" })</li>
+    <li>@Html.ActionLink("Log in", "Login", "Authentication", new { area = "" }, new { @class = "sectin-color" })</li>
+}
+

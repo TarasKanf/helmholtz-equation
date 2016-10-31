@@ -1,0 +1,55 @@
+﻿@model SocialNetwork.Domain.DataTransferObjects.LoginDTO
+
+@{
+    ViewBag.Title = "Login";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section Styles
+{
+    <link href="@Url.Content("~/Content/authentication.css")" rel="stylesheet" type="text/css" />
+}
+
+<div class="container">
+    <br />
+    <h2 class="text-center">Log in</h2>
+    <br />
+
+    @using (Html.BeginForm("Login", "LoginApi", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+    {
+      /*  @Html.AntiForgeryToken() */
+        <form class="form col-md-12 center-block">
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <div class="form-group">
+                @Html.LabelFor(m => m.UserName, new { @class = "col-md-offset-3 col-md-2 control-label" })
+                <div class="col-md-2">
+                    @Html.TextBoxFor(m => m.UserName, new { @class = "form-control" })
+                </div>
+                <div class="col-md-5">
+                    @Html.ValidationMessageFor(m => m.UserName, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.Password, new { @class = "col-md-offset-3 col-md-2 control-label" })
+                <div class="col-md-2">
+                    @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
+                </div>
+                <div class="col-md-5">
+                    @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group" align="center">
+                <br />
+                <input type="submit" class="btn btn-primary" value="Sign In" />
+            </div>
+        </form>
+    }
+</div>
+
+@section Scripts {
+    <script src="~/Scripts/jquery.validate-vsdoc.js"></script>
+    <script src="~/Scripts/jquery.validate.js"></script>
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+}

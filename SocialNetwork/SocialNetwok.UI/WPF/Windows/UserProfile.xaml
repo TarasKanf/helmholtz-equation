@@ -1,0 +1,136 @@
+﻿<Window x:Class="SocialNetwork.UI.WPF.UserProfile"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SocialNetwork.UI"
+        xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+        ResizeMode="NoResize"
+        mc:Ignorable="d"
+        Title="UserProfile" Height="446" Width="658"
+        WindowStartupLocation="CenterScreen" Icon="/SocialNetwork.UI.WPF;component/Resources/Images/S.PNG">
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="Closing">
+            <i:InvokeCommandAction Command="{Binding WindowClosing}"/>
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
+    <Grid >        
+        <Grid Style="{StaticResource TabGridStyle}" Margin="0,0,0,-1" Background="White" Height="418" VerticalAlignment="Top">
+            <Canvas HorizontalAlignment="Left" Height="46" VerticalAlignment="Top" Width="652" Background="#FF212121">
+                <TextBox x:Name="textBox" Template="{StaticResource TextBoxRoundStyle}" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="275" 
+                         SpellCheck.IsEnabled="True"  Text="{Binding FindFriendEmailOrLogin, Mode=TwoWay}" TextAlignment="Center" Canvas.Left="175" Canvas.Top="13"/>
+                <Button Command="{Binding FindFriendCommand}" HorizontalAlignment="Left" VerticalAlignment="Top" Width="25" RenderTransformOrigin="3.4,0.696" Height="23" Canvas.Left="425" Canvas.Top="13">
+                    <Button.Template>
+                        <ControlTemplate>
+                            <Border HorizontalAlignment="Center" VerticalAlignment="Center" >
+                                <Image Source="..\Resources\Images\find.png" 
+                               Grid.Column="1"  Stretch="Fill"/>
+                            </Border>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
+
+                <TextBlock x:Name="textBlock1"  FontFamily="Rockwell Extra Bold" 
+                           Foreground="#2196F3" FontSize="20" Text="{Binding SelectedFriend.FirstName, Mode=TwoWay}" Canvas.Left="465" TextWrapping="Wrap" Canvas.Top="10" Width="130" Height="26"/>
+                <Button x:Name="changeProfilePhoto" Click="openFriendProfile_Clicked" Canvas.Left="600" Height="46" Width="52">
+                    <Button.Template>
+                        <ControlTemplate>
+                            <Border HorizontalAlignment="Center" VerticalAlignment="Center">
+                                <Image x:Name="image2" Source="{Binding SelectedFriend.ProfilePhoto.Url, Mode=TwoWay}" Grid.Column="1" Height="46" Width="52" Stretch="Fill" />
+                            </Border>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
+                <x:Code>
+                    private void openFriendProfile_Clicked(object sender, RoutedEventArgs e)
+                    {
+                        FriendProfilePage.Visibility = Visibility.Visible;
+                    }
+                </x:Code>
+
+            </Canvas>
+            <Image x:Name="image" Source="..\Resources\Images\SoneT.png" Margin="0,0,477,367"/>
+            <ListBox 
+                x:Name="Friends" HorizontalAlignment="Left" VerticalAlignment="Bottom" Height="372" Width="172" 
+                SelectedItem="{Binding SelectedFriend, Mode=TwoWay}" ItemsSource="{Binding Friends, Mode=TwoWay}" Margin="480,0,0,0">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock Text="{Binding FirstName, Mode=TwoWay}" />
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+            <Grid Visibility="{Binding ControlsVisibility, Converter={StaticResource BoolToVisiblity}, Mode=TwoWay}" RenderTransformOrigin="0.637,0.66">
+                <local:DocumentBox ScrollViewer.CanContentScroll="True" Document="{Binding Messages, Mode=TwoWay}" ScrollViewer.VerticalScrollBarVisibility="Visible" AcceptsReturn="True" 
+                                  BorderThickness="0" HorizontalAlignment="Left" Margin="180,56,0,0" VerticalAlignment="Top" Height="250" Width="300" IsReadOnly="True">
+                    <RichTextBox.Resources>
+                        <Style TargetType="{x:Type Paragraph}">
+                            <Setter Property="Margin" Value="0"/>
+                            <Setter Property="FontSize" Value="{Binding FontSize, Mode=TwoWay}"/>
+                        </Style>
+                    </RichTextBox.Resources>
+                </local:DocumentBox>
+                <TextBox x:Name="Message"  HorizontalAlignment="Left" Text="{Binding Message, Mode=TwoWay}" Height="62" Margin="190,311,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="275"/>
+                <Button x:Name="SendMessage" Content="Send" Command="{Binding SendMessageCommand}" HorizontalAlignment="Left" Margin="290,378,0,0" VerticalAlignment="Top" Width="75" Height="25"/>
+            </Grid>
+            <Canvas HorizontalAlignment="Left" Background="#FF212121" Height="372" Margin="0,46,0,0" VerticalAlignment="Top" Width="175">
+                <Image x:Name="image1" Source="{Binding ImageSource, Mode=TwoWay}" HorizontalAlignment="Right" Height="140" 
+            		VerticalAlignment="Top" Width="155" Stretch="Fill" Canvas.Left="10"/>
+
+                <TextBlock x:Name="textBlock" Text="{Binding NameAndSurname, Mode=OneWay}" FontFamily="Rockwell Extra Bold" 
+                           Foreground="#2196F3" TextWrapping="Wrap" Canvas.Top="160" Height="65" Width="175" FontSize="24" TextAlignment="Center"/>
+            </Canvas>
+
+            <Button x:Name="changePhoto" Style="{StaticResource FadeOutButton}" Command="{Binding ChangeProfilePhoto}" Opacity="0" Content="" RenderTransformOrigin="0.545,0.5" Margin="60,86,532,282">
+                <Button.Template>
+                    <ControlTemplate>
+                        <Border HorizontalAlignment="Center" VerticalAlignment="Center" >
+                            <Image Source="..\Resources\Images\changePhoto.png" 
+                					Grid.Column="1"  Stretch="Fill"/>
+                        </Border>
+                    </ControlTemplate>
+                </Button.Template>
+            </Button>
+        </Grid>
+        <Grid x:Name="FriendProfilePage" Visibility="Hidden">
+            <Canvas Background="White" HorizontalAlignment="Left" Height="418" Margin="175,0,0,-1" VerticalAlignment="Top" Width="477">
+                <Canvas Height="170" Canvas.Left="10" Canvas.Top="185" Width="440" Background="#FF212121"/>
+                <Image x:Name="image3" Height="170" Source="{Binding SelectedFriend.ProfilePhoto.Url, Mode=TwoWay}" Canvas.Left="85" Canvas.Top="10" Width="265"/>
+                <Label x:Name="labelName"  FontFamily="Rockwell Extra Bold" Foreground="#2196F3" Content="Name" Canvas.Left="35" Canvas.Top="229" Height="28" Width="130" FontSize="18"/>
+                <Label x:Name="labelSurname"  FontFamily="Rockwell Extra Bold" Foreground="#2196F3" Content="Surname" FontSize="18" Canvas.Left="35" Canvas.Top="269"/>
+                <Label x:Name="labelEmail"  FontFamily="Rockwell Extra Bold" Foreground="#2196F3" Content="Email" FontSize="18" Canvas.Left="35" Canvas.Top="312"/>
+                <Button x:Name="SendMessageBtn" Click="closeFriendProfile_Clicked" Content="Send message" Width="175" Height="25" Canvas.Left="140" Canvas.Top="370"/>
+                <Label x:Name="friendName"  FontFamily="Rockwell Extra Bold" Foreground="White" Content="{Binding SelectedFriend.FirstName, Mode=TwoWay}" FontSize="18" Canvas.Left="165" Canvas.Top="229" Height="28" Width="205"/>
+                <Label x:Name="friendSurname"  FontFamily="Rockwell Extra Bold" Foreground="White" Content="{Binding SelectedFriend.LastName, Mode=TwoWay}" FontSize="18" Canvas.Left="165" Canvas.Top="269" Height="31" Width="205"/>
+                <Label x:Name="friendEmail"  FontFamily="Rockwell Extra Bold"  Foreground="White" Content="{Binding SelectedFriend.Email, Mode=TwoWay}" FontSize="18" Canvas.Left="165" Canvas.Top="312" Height="31" Width="205"/>
+                <Button x:Name="back" Click="closeFriendProfile_Clicked" Width="60" Height="52" Canvas.Left="390" Canvas.Top="23" RenderTransformOrigin="0.5,0.5">
+                    <Button.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform/>
+                            <SkewTransform/>
+                            <RotateTransform Angle="180"/>
+                            <TranslateTransform/>
+                        </TransformGroup>
+                    </Button.RenderTransform>
+                    <Button.Template>
+                        <ControlTemplate>
+                            <Border HorizontalAlignment="Center" VerticalAlignment="Center" >
+                                <Image Source="..\Resources\Images\back.png" 
+                					Grid.Column="1"  Stretch="Fill"/>
+                            </Border>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
+                <Label x:Name="labelLogin"  FontFamily="Rockwell Extra Bold" Foreground="#2196F3" Content="Login" Canvas.Left="35" Canvas.Top="189" Height="35" Width="130" FontSize="18"/>
+                <Label x:Name="friendLogin"  FontFamily="Rockwell Extra Bold" Foreground="White" Content="{Binding SelectedFriend.Login, Mode=TwoWay}" FontSize="18" Canvas.Left="165" Canvas.Top="189" Height="29" Width="205"/>
+
+                <x:Code>
+                    private void closeFriendProfile_Clicked(object sender, RoutedEventArgs e)
+                    {
+                        FriendProfilePage.Visibility = Visibility.Hidden;
+                    }
+                </x:Code>
+            </Canvas>
+        </Grid>
+       
+    </Grid>
+</Window>

@@ -1,0 +1,59 @@
+﻿body {
+    padding-top: 50px;
+    padding-bottom: 20px;
+}
+
+body, h2, input, select, textarea {
+		
+		font-family: "Cocon", Helvetica, sans-serif !important;
+	
+	}
+
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select,
+textarea {
+    max-width: 280px;
+}
+
+
+.section-color{
+    text-align:right!important;
+    padding-left: 100px;
+    color:#fff;
+    font-size:30px !important;
+    font-weight: 200;
+    white-space:nowrap;
+}
+
+.navbar-brand{
+    color:#fff;
+    font-size:24px !important;
+    font-weight: 400;
+    white-space:nowrap;
+    padding-left:15px !important;
+}
+
+
+.navbar-inverse .navbar-brand {
+    color: #fff;
+}
+.navbar-inverse .navbar-nav>li>a{
+    color: #fff !important;
+    text-align:right !important;
+}
+
+.body-color{
+    background-color:#fff !important;
+}
+
+footer p{
+    text-align:center;
+}
+
+.sonet-style{
+    color:#2196F3 !important;
+    font-size:32px !important;
+    font-family:Rockwell;
+    font-weight:900;   
+}

@@ -1,0 +1,160 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1" MembersFormat="NameAndType">
+  <Class Name="SocialNetwork.UI.Console.CommandHandlers.CommandHandler" Collapsed="true">
+    <Position X="9.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAQQQAAEAAAAAAACAAAAAAAAEAMAAAAA=</HashCode>
+      <FileName>CommandHandlers\CommandHandler.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="SocialNetwork.UI.Console.CommandHandlers.ExitHandler" Collapsed="true">
+    <Position X="4" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ABAAAAAAAAIAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>CommandHandlers\ExitHandler.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SocialNetwork.UI.Console.CommandHandlers.ExportToCvsHandler" Collapsed="true">
+    <Position X="9.25" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAIAAAQAAAAAAAAAAAAAEAAIAAAIAAAAAQA=</HashCode>
+      <FileName>CommandHandlers\ExportToCVSHandler.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SocialNetwork.UI.Console.CommandHandlers.FindHandler" Collapsed="true">
+    <Position X="12.75" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAQAAEAAAAAAAAAAAAgAAAAAAAAAAAA=</HashCode>
+      <FileName>CommandHandlers\FindHandler.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SocialNetwork.UI.Console.CommandHandlers.FriendsHandler" Collapsed="true">
+    <Position X="0.5" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ACAAgAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>CommandHandlers\FriendsHandler.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SocialNetwork.UI.Console.CommandHandlers.HelpHandler" Collapsed="true">
+    <Position X="5.75" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AABAAAAAAAAAAAQAAAAAAAAAAAAAQAAAAAAAAAAAAAA=</HashCode>
+      <FileName>CommandHandlers\HelpHandler.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SocialNetwork.UI.Console.CommandHandlers.LogInHandler" Collapsed="true">
+    <Position X="14.5" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAgAIAAAQAABAAAAAAAAAAABAAAAAAAAAAAAA=</HashCode>
+      <FileName>CommandHandlers\LogInHandler.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SocialNetwork.UI.Console.CommandHandlers.LogOutHandler" Collapsed="true">
+    <Position X="2.25" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAgAIIAAQAAgAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>CommandHandlers\LogOutHandler.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SocialNetwork.UI.Console.CommandHandlers.PathSearchHandler" Collapsed="true">
+    <Position X="7.5" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAQAAAAIAAAAAAAAAAAAAAAAAAAAAAQ=</HashCode>
+      <FileName>CommandHandlers\PathSearchHandler.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SocialNetwork.UI.Console.CommandHandlers.SendMessageHandler" Collapsed="true">
+    <Position X="11" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAQIAAAQAACAIAAAAAAAAACAAAAAAAAAAAAA=</HashCode>
+      <FileName>CommandHandlers\SendMessageHandler.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SocialNetwork.UI.Console.CommandHandlers.SignUpHandler" Collapsed="true">
+    <Position X="16.25" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CAAAgAAAgAIACAQAACAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>CommandHandlers\SignUpHandler.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SocialNetwork.UI.Console.CommandInfos.CommandInfo" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="2.75" Y="6" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAABAAABACAAAAAAAAAEQAAAAAAAAAAAAAAAIABIAAA=</HashCode>
+      <FileName>CommandInfos\CommandInfo.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.213" />
+  </Class>
+  <Class Name="SocialNetwork.UI.Console.InputOutput.ConsoleService" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="0.5" Y="8" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QAAAAAAAAAAAAAAAEAQAAAAAAAAAAAAAgAAAAAAAACA=</HashCode>
+      <FileName>InputOutput\ConsoleService.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="SocialNetwork.UI.Console.Command" Collapsed="true">
+    <Position X="9.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAgAAAAAAAAAAQAAAAAAAAAAEAAAAAAgAAAAAAAAAA=</HashCode>
+      <FileName>Command.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SocialNetwork.UI.Console.CommandParser" Collapsed="true">
+    <Position X="7.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAIAAACAAAAAAAIAAAAAAABEBAAAAAAABABAE=</HashCode>
+      <FileName>CommandParser.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SocialNetwork.UI.Console.NinjectKernel" Collapsed="true">
+    <Position X="2.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAgAAAAA=</HashCode>
+      <FileName>NinjectKernel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SocialNetwork.UI.Console.Program" Collapsed="true">
+    <Position X="4.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAABAAAgIAAAAAAAAAAAAAAAAAAAAAAAAAhAAAAAA=</HashCode>
+      <FileName>Program.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SocialNetwork.UI.Console.Properties.Resources" Collapsed="true">
+    <Position X="0.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>DeAhQEAABATACQkAFEABkoIEAVLGIgxEIABCIQAhAJg=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Interface Name="SocialNetwork.UI.Console.CommandHandlers.ICommandHandler" Collapsed="true">
+    <Position X="11.25" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>CommandHandlers\ICommandHandler.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="SocialNetwork.UI.Console.CommandInfos.ICommandInfo" Collapsed="true">
+    <Position X="2.75" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>CommandInfos\ICommandInfo.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="SocialNetwork.UI.Console.InputOutput.IInputOutputSevice">
+    <Position X="0.5" Y="6.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACA=</HashCode>
+      <FileName>InputOutput\IInputOutputService.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="SocialNetwork.UI.Console.InputOutput.IPasswordReader" Collapsed="true">
+    <Position X="0.5" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>InputOutput\IPasswordReader.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

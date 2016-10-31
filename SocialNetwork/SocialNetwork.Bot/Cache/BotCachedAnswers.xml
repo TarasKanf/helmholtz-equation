@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BotAnswers>
+  <WhatIsHandler>
+    <Request>cow</Request>
+    <BotAnswer>CattleвЂ”colloquially cowsвЂ”are the most common type of large domesticated ungulates. They are a prominent modern member of the subfamily Bovinae, are the most widespread species of the genus Bos, and are most commonly classified collectively as Bos taurus. Cattle are raised as livestock for meat (beef and veal), as dairy animals for milk and other dairy products, and as draft animals (oxen or bullocks that pull carts, plows and other implements). Other products include leather and dung for manure or fuel. In some regions, such as parts of India, cattle have significant religious meaning. From as few as 80 progenitors domesticated in southeast Turkey about 10,500 years ago, according to an estimate from 2003, there are 1.3 billion cattle in the world. In 2009, cattle became one of the first livestock animals to have a fully mapped genome. Some consider cattle the oldest form of wealth, and cattle raiding consequently one of the earliest forms of theft.
+
+https://en.wikipedia.org/wiki/cow
+</BotAnswer>
+  </WhatIsHandler>
+  <WhatIsHandler>
+    <Request>milk</Request>
+    <BotAnswer>Milk is a pale liquid produced by the mammary glands of mammals. It is the primary source of nutrition for infant mammals before they are able to digest other types of food. Early-lactation milk contains colostrum, which carries the mother's antibodies to its young and can reduce the risk of many diseases. It contains many other nutrients including protein and lactose.
+As an agricultural product, milk is extracted from mammals during or soon after pregnancy. Dairy farms produced about 730 million tonnes of milk in 2011, from 260 million dairy cows. India is the world's largest producer of milk, and is the leading exporter of skimmed milk powder, yet she exports very few other milk product. The ever increasing rise in domestic demand for dairy products and a large demand-supply gap could lead to India being a net importer of dairy products in the future. New Zealand, the European Union's 28 member states, Australia, and the United States are the world's largest exporters of milk and milk products. China and Russia were the world's largest importers of milk and milk products. Both countries were self-sufficient by 2016 contributing to a worldwide glut of milk.
+https://en.wikipedia.org/wiki/milk
+</BotAnswer>
+  </WhatIsHandler>
+  <WhatIsHandler>
+    <Request>son</Request>
+    <BotAnswer>A son is a male offspring; a boy or man in relation to his parents. The female counterpart is a daughter.
+
+https://en.wikipedia.org/wiki/son
+</BotAnswer>
+  </WhatIsHandler>
+</BotAnswers>

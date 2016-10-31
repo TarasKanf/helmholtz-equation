@@ -1,0 +1,136 @@
+﻿.img-profile.container {
+    margin-top: 50px;
+}
+
+.img-profile-foto-row {
+    padding: 10px;
+    box-shadow: 0 0 13px rgba(0,0,0, .5);
+    background-color: #212121;
+}
+
+.img-profile-fotos {
+    padding: 0;
+}
+
+.img-profile-fotos img {
+    height: 250px;
+    width: 100%;
+}
+
+body {
+    background-color: #EEEEEE;
+}
+
+.userName {
+    position: absolute;
+    top: 185px;
+    left: 10px;
+    color: white;
+    opacity: 0.9;
+    display: inline-block;
+    padding: 5px;
+    background-color: #006064;
+    border-radius: 7px;
+}
+
+.fotoChangeButton {
+    font-size: 30px;
+    border-radius: 50%;
+    width: 55px;
+    color: white;
+    background-color: black;
+    position: absolute;
+    opacity: 0.7;
+    top: 100px;
+    left: 43%;
+    display: inline-block;
+    padding: 5px;
+    -webkit-transition: all ease-out 10s;
+    -o-transition: all ease-out 10s;
+    -moz-transition: all ease-out 10s;
+    transition: all ease 10s;
+    transition-duration: 0.5s;
+}
+
+.fader {
+    height: 250px;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    background-color: black;
+    opacity: 0;
+    -webkit-transition: all ease-out 10s;
+    -o-transition: all ease-out 10s;
+    -moz-transition: all ease-out 10s;
+    transition: all ease 10s;
+    transition-duration: 0.5s;
+}
+
+.fader:hover {
+    opacity: .5;
+}
+
+.img-profile-fotos img:hover + .fotoChangeButton {
+    opacity: 1;
+}
+
+.fotoChangeButton:hover {
+    opacity: 1;
+}
+
+.img-profile .glyphicon.glyphicon-edit {
+    cursor: pointer;
+}
+
+.row.img-profile-info .panel {
+    padding: 0 15px;
+    -webkit-transition: all ease-out 10s;
+    -o-transition: all ease-out 10s;
+    -moz-transition: all ease-out 10s;
+    transition: all ease 10s;
+    transition-duration: 0.5s;
+}
+.row.img-profile-info .panel:hover {
+    position: relative;
+    top: -2px;
+    z-index: 1000;
+    box-shadow: 0 0 7px rgba(0,0,0, .4);
+}
+
+p{
+    font-size:large;
+}
+
+.timetable-row h4{
+    text-align:center;
+    font-weight:bold;
+    top:10px;
+}
+
+.timetable-row .panel{
+        padding: 0 15px;
+    -webkit-transition: all ease-out 10s;
+    -o-transition: all ease-out 10s;
+    -moz-transition: all ease-out 10s;
+    transition: all ease 10s;
+    transition-duration: 0.5s;
+    background-color:#B2DFDB;
+}
+
+.timetable-row .panel:hover{
+    position: relative;
+    top: -2px;
+    z-index: 1000;
+    box-shadow: 0 0 7px rgba(0,0,0, .4);
+}
+.row {
+    margin-bottom: 5px;
+}
+
+#UsefulLinkImage {
+    margin-top: 0%;
+    margin-left: 20%;
+    margin-right: 20%;
+    width: 60%;
+    height: 60%;
+}

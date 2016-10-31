@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ArrayOfUser xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <User>
+    <Id>ca761232-ed42-11ce-bacd-00aa0057b223</Id>
+    <FirstName>Botty</FirstName>
+    <LastName>Bot</LastName>
+    <Email>bot@gmail.com</Email>
+    <Password>lol</Password>
+    <Photo>..\Resources\Images\ProfilePhotos\bot.png</Photo>
+  </User>
+  <User>
+    <Id>072b6351-ef6b-4575-ae7a-a49bca855cfc</Id>
+    <FirstName>Sofija</FirstName>
+    <LastName>Padus</LastName>
+    <Email>padus@ukr.net</Email>
+    <Password>2168714222313288206625119718711816514092164</Password>
+    <Photo>..\Resources\images\ProfilePhotos\6.jpg</Photo>
+  </User>
+  <User>
+    <Id>c0ab168e-a82e-4f1e-bd0c-fde67a6d13ff</Id>
+    <FirstName>Iryna</FirstName>
+    <LastName>Katchmar</LastName>
+    <Email>katchmar17@gmail.com</Email>
+    <Password>156222451571111469321418421911921215013910181</Password>
+    <Photo>..\Resources\images\ProfilePhotos\4.jpg</Photo>
+  </User>
+  <User>
+    <Id>cfb1366c-f702-44a0-95f7-b3d02d8ec7ca</Id>
+    <FirstName>Taras</FirstName>
+    <LastName>Kanafotskiy</LastName>
+    <Email>kanafotskiy@gmail.com</Email>
+    <Password>101501632231132041722724241139102253141141</Password>
+    <Photo>..\Resources\images\ProfilePhotos\4.jpg</Photo>
+  </User>
+  <User>
+    <Id>c915bf03-45b5-417c-b954-5d7eb8ef35eb</Id>
+    <FirstName>Vasylyna</FirstName>
+    <LastName>Mykhalchuk</LastName>
+    <Email>vasylyna@gmail.com</Email>
+    <Password>957720459901671012142913139222184130207153</Password>
+  </User>
+</ArrayOfUser>

@@ -1,0 +1,59 @@
+﻿@{
+    ViewBag.Title = "My Profile";
+}
+
+@section Styles{
+    <link rel="stylesheet" href="~/Content/skel.css" />
+    <link rel="stylesheet" href="~/Content/style.css" />
+    <link rel="stylesheet" href="~/Content/style-xlarge.css" />
+}
+
+<!-- Main -->
+<section class="wrapper">
+    <div class="container 75%">
+        <header class="major">
+            <h2>My Profile</h2>
+            <section class="profiles"></section>
+        </header>
+
+        <!-- Profile -->
+        <section>
+            <div class="table-wrapper">
+                <table>
+
+                    <tbody>
+                    <tr>
+                        <td>
+                            <section class="3u 6u(medium) 12u$(xsmall) profile">
+                                <img src="~/Images/profile_placeholder.gif" alt=""/>
+
+                            </section>
+                        </td>
+                        <td>
+                            <h4>@ViewBag.FirstName + @ViewBag.LastName</h4>
+                        </td>
+
+                    </tr>
+                        <tr>
+                            <td>First Name</td>
+                            <td>@ViewBag.FistName</td>
+                        </tr>
+                    <tr>
+                        <td>Last Name</td>
+                        <td>@ViewBag.LastName</td>
+                    </tr>
+                    
+                    </tbody>
+                </table>
+            </div>
+        </section>
+    </div>
+
+</section>
+
+@section Scripts{
+    <script src="~/Scripts/jquery.min.js"></script>
+    <script src="~/Scripts/skel.min.js"></script>
+    <script src="~/Scripts/skel-layers.min.js"></script>
+    <script src="~/Scripts/init.js"></script>
+}

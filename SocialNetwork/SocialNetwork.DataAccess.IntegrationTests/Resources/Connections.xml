@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ArrayOfConnection xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Connection>
+    <Id>7c5f5186-c33d-4353-b791-6833b18f603e</Id>
+    <User1Id>b9cd2950-c57b-46d0-9959-a94b3173fed5</User1Id>
+    <User2Id>d70ffc73-790b-40d3-bd65-0accfef2ecfa</User2Id>
+  </Connection>
+  <Connection>
+    <Id>075b4df7-5b5d-4ac3-98ba-b1000c9c4a0d</Id>
+    <User1Id>b9cd2950-c57b-46d0-9959-a94b3173fed5</User1Id>
+    <User2Id>e7fc5949-208d-46c1-968f-f18083620c22</User2Id>
+  </Connection>
+  <Connection>
+    <Id>3c646223-4b83-4559-806e-5bd4b4e948ed</Id>
+    <User1Id>51db3b95-e9d2-40ed-ae53-8b9e53e15e6a</User1Id>
+    <User2Id>25edd533-7cfa-419d-b281-d34a3ff117e0</User2Id>
+  </Connection>
+  <Connection>
+    <Id>1b1c13da-b0b5-4288-9d10-e841b69248f9</Id>
+    <User1Id>5cd417cd-0a0e-430a-884a-5686fecf0c83</User1Id>
+    <User2Id>51db3b95-e9d2-40ed-ae53-8b9e53e15e6a</User2Id>
+  </Connection>
+  <Connection>
+    <Id>ae11ee15-ab81-42be-99f3-9d3412429c86</Id>
+    <User1Id>c846da28-bec0-4a1d-b735-5697f5c853a1</User1Id>
+    <User2Id>b9cd2950-c57b-46d0-9959-a94b3173fed5</User2Id>
+  </Connection>
+  <Connection>
+    <Id>5039b815-9db1-49af-a4b4-d43a94a20774</Id>
+    <User1Id>c846da28-bec0-4a1d-b735-5697f5c853a1</User1Id>
+    <User2Id>e7fc5949-208d-46c1-968f-f18083620c22</User2Id>
+  </Connection>
+</ArrayOfConnection>

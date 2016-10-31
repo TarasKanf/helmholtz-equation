@@ -1,0 +1,211 @@
+﻿
+@{
+    ViewBag.Title = "Messages";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+    @section Styles{
+    <link href="@Url.Content("~/Content/bootstrap.min.css")" rel="stylesheet">
+    <link href="@Url.Content("~/Content/UserMessages.css")" rel="stylesheet"> 
+        }
+ 
+    <div class="container bootstrap snippet">
+        <div class="row">
+            <div class="col-md-4 bg-white ">
+                <div class="row border-bottom padding-sm" style="height: 40px;">
+                   My Friends
+                </div>
+                <ul class="friend-list" id="friendsList"></ul>
+            </div>
+
+          
+            <!-- selected chat -->
+            <div class="col-md-8 bg-white ">
+                <div class="chat-message" >
+                    <ul class="chat" id="chat">
+
+                    </ul>
+                    
+                </div>
+
+                
+            </div>
+        </div>
+        <!-- /input-group -->
+        <div class="chat-box bg-white">
+            <div class="input-group">
+                <input class="form-control border no-shadow no-rounded" placeholder="Type your message here" id="messageText" type="text">
+                <span class="input-group-btn">
+                    <button class="btn btn-success no-rounded" type="button" onclick="submitClick()">Send</button>
+                </span>
+            </div>
+        </div>
+    </div>
+ 
+    @section Scripts{
+    <script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
+    <script src="~/Scripts/jquery-1.10.2.js"></script>
+    <script src="http://netdna.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+   
+     <script>
+         var myUserName = "";
+         $(document).ready(function () {
+             
+             $.ajax({
+                 type: 'GET',
+                 dataType: 'json',
+                 contentType: 'application/json;charset=utf-8',
+                 url: '/api/UserSearching/GetById?id=' + '@ViewBag.Id',
+                 success: function (data) {
+                     myUserName = data.FirstName + ' ' + data.LastName;
+                 }
+             });
+             $.ajax(
+                 {
+
+                     type: 'GET',
+                     dataType: 'json',
+                     contentType: 'application/json;charset=utf-8',
+                     url: '/api/Friends/GetFriends?id=' + '@ViewBag.Id',
+                     success: function (data) {
+                         try {
+
+                             $.each(data, function (key, val) {
+                                 receiverId = val.Id;
+
+                                 var ul = document.getElementById("friendsList");
+                                 var li = document.createElement("li");
+                                 li.addEventListener("click", function () {
+                                     var senderName = "";
+                                     $.ajax({
+                                         type: 'GET',
+                                         dataType: 'json',
+                                         contentType: 'application/json;charset=utf-8',
+                                         url: '/api/UserSearching/GetById?id=' + val.Id,
+                                         success: function (data) {
+                                             senderName = data.FirstName + ' ' + data.LastName;
+                                         }
+                                     });
+                                     var userName = "";
+                                     $.ajax({
+                                         type: 'GET',
+                                         dataType: 'json',
+                                         contentType: 'application/json;charset=utf-8',
+                                         url: '/api/UserSearching/GetById?id=' + '@ViewBag.Id',
+                                         success: function (data) {
+                                             userName = data.FirstName + ' ' + data.LastName;
+                                         }
+                                     });
+
+                                     $.ajax(
+                                         {
+                                             type: 'GET',
+                                             dataType: 'json',
+                                             contentType: 'application/json;charset=utf-8',
+                                             url: '/api/MessageHistory/GetAllMessageHistory?userId=' + '@ViewBag.Id' + '&userFriendId=' + val.Id,
+                                             success: function (data) {
+                                                 try {
+                                                     var html = '';
+                                                     $.each(data, function (key, val) {
+                                                         if (val.SenderId !== '@ViewBag.Id') {
+                                                             html += '<li class="left clearfix">  <span class="chat-img pull-left"> <img src="http://bootdey.com/img/Content/user_1.jpg" alt="User Avatar"> </span> <div class="chat-body clearfix">' +
+                                                                 '<div class="header"> <strong class="primary-font">' + senderName + '</strong> ' +
+                                                                 ' </div> <p>' + val.Data + '</p> </div>  </li>   '
+                                                         }
+                                                         else {
+                                                             html += '<li class="right clearfix">  <span class="chat-img pull-right"> <img src="http://bootdey.com/img/Content/user_2.jpg" alt="User Avatar"> </span> <div class="chat-body clearfix">' +
+                                                                 '<div class="header"> <strong class="primary-font">' + userName + '</strong> ' +
+                                                                 ' </div> <p>' + val.Data + '</p> </div>  </li>   '
+                                                         }
+                                                     });
+                                                     $('#chat').html(html);
+                                                 } catch (e) {
+                                                     console.log('Error while formatting the data : ' + e.message)
+                                                 }
+                                             },
+                                             error: function (xhrequest, error, thrownError) {
+                                                 console.log('Error while ajax call: ' + error);
+                                             }
+                                         }
+                                     );
+                                 }, false);
+                                 //li.setAttribute("class", "active");
+                                 li.setAttribute("style", "list-style-type: none;");
+                                 var a = document.createElement("a");
+                                 a.setAttribute("class", "clearfix");
+
+                                 var img = document.createElement("img");
+                                 img.setAttribute("src", "http://bootdey.com/img/Content/user_1.jpg");
+                                 img.setAttribute("class", "img-circle");
+
+                                 a.appendChild(img);
+                                 var div = document.createElement("div");
+                                 div.setAttribute("class", "friend-name");
+                                 var strong = document.createElement("strong");
+                                 strong.innerHTML = val.FirstName + ' ' + val.LastName;
+                                 div.appendChild(strong);
+                                 a.appendChild(div);
+                                 li.appendChild(a);
+                                 ul.appendChild(li);
+                             });
+                         } catch (e) {
+                             console.log('Error while formatting the data : ' + e.message)
+                         }
+                     },
+                     error: function (xhrequest, error, thrownError) {
+                         console.log('Error while ajax call: ' + error);
+                     }
+                 }
+             );
+
+         });
+
+         var receiverId = '';
+
+         function submitClick() {
+             $.ajax({
+                 type: "PUT",
+                 url: '/api/messanger/guid',
+                 data: {
+                     'SenderId': '@ViewBag.Id',
+                     'ReceiverId': receiverId,
+                     'Data': document.getElementById("messageText").value
+                 },
+                 success: function () {
+                     var ul = document.getElementById("chat");
+                     var li = document.createElement("li");
+                     li.setAttribute("class", "right clearfix");
+                     var span = document.createElement("span");
+                     span.setAttribute("class", "chat-img pull-right");
+                     var img = document.createElement("img");
+                     img.setAttribute("src", "http://bootdey.com/img/Content/user_2.jpg");
+                     img.setAttribute("class", "img-circle");
+                     span.appendChild(img);
+                     li.appendChild(span);
+                     var div_chatbody = document.createElement("div");
+                     div_chatbody.setAttribute("class", "chat-body clearfix");
+                     var div_header = document.createElement("div");
+                     div_header.setAttribute("class", "header");
+                     var strong = document.createElement("strong");
+                     strong.setAttribute("class", "primary-font");
+                     strong.innerHTML = myUserName;
+                     div_header.appendChild(strong);
+                     var p = document.createElement("p");
+                     p.innerHTML = document.getElementById("messageText").value;
+                     div_chatbody.appendChild(div_header);
+                     div_chatbody.appendChild(p);
+                     li.appendChild(div_chatbody);
+                     ul.appendChild(li);
+                     document.getElementById("messageText").value = '';
+                 },
+                 dataType: function () { alert("nooooo") }
+             });
+         };
+
+
+
+       
+        </script>
+        }
+ 
