@@ -3,11 +3,30 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using HelmholtzEquation.Process;
 
 namespace HelmholtzEquation
 {
     class Program
     {
+        static void Main(string[] args)
+        {
+            Console.WriteLine("Process was started");
+            ProcessHandler processHandler = new ProcessHandler();
+
+            processHandler.StartProcess();
+
+            State state = processHandler.States[1];
+
+            Console.WriteLine("Process restarted from second step");
+            processHandler.GoToState(state);
+
+            processHandler.StartProcess();
+
+            Console.ReadKey();
+        }
+
+        /*
         // для зміни умові задачі потрібно змінити imK,realK,EdgeRadius,ImBoundaryCondition,RealBoundaryCondition
         // Для отримання розвязку на іншій кривій потрібно змінити CurveRadiusToFindSolution
         static double realK =0.1;
@@ -81,6 +100,6 @@ namespace HelmholtzEquation
         static double RealAccurateSolution(double t)
         {
             return prblm.H1(t, outsidePointR, outsidePointT);
-        }
+        }*/
     }
 }
