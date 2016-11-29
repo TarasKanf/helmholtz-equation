@@ -41,6 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ChainLinks\IChainLink.cs" />
     <Compile Include="Integrals\ICore.cs" />
     <Compile Include="Integrals\SmoothCore.cs" />
     <Compile Include="Integrals\Integral.cs" />
@@ -48,6 +49,7 @@
     <Compile Include="LinearSystem\SLAE.cs" />
     <Compile Include="Helpers\TrigonPolynomial.cs" />
     <Compile Include="Problem.cs" />
+    <Compile Include="Process\Storage.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
