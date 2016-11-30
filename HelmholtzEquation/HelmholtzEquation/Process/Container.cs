@@ -16,9 +16,10 @@ namespace HelmholtzEquation.Process
         {
             ChainLinks = new IChainLink[]
             {
-                new TemporaryChainLink("chain link 1"),
-                new TemporaryChainLink("chain link 2"),
-                new TemporaryChainLink("chain link 3")
+                // TODO step names !!!
+                new ChainLink1("chain link 1"),
+                new ChainLink2("chain link 2"),
+                new ChainLink3("chain link 3")
             };
         }
 
