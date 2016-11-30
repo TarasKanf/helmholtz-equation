@@ -19,6 +19,10 @@ namespace HelmholtzEquation
         private const int accuracyN = 30;
         private const double gamma = 0.57721566490153;
         // і інші поля якщо потрібно
+        public Problem()
+        {
+            // ChainLink1 dependency
+        }
         public Problem(Func<double, double> _edgeRadius, double _realK, Func<double, double> _realBoundaryCondition, Func<double, double> _imBoundaryCondition)
         {
             edgeRadius = _edgeRadius;

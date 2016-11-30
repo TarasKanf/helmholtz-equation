@@ -41,6 +41,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ChainLinks\ChainLink1.cs" />
+    <Compile Include="ChainLinks\ChainLink2.cs" />
+    <Compile Include="ChainLinks\ChainLink3.cs" />
     <Compile Include="ChainLinks\IChainLink.cs" />
     <Compile Include="ChainLinks\TemporaryChainLink.cs" />
     <Compile Include="Integrals\ICore.cs" />
