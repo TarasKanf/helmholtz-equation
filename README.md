@@ -1,1 +1,1 @@
-# IntegralEquationProject
+# helmholtz-equation
